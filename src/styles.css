@@ -1,10 +1,13 @@
 :root {
     --light-blue: #31C3BD;
     --light-blue-active: #65E9E4;
+    --light-blue-shadow: #118C87;
     --light-yellow: #F2B137;
-    --light-yellow: #FFC860;
+    --light-yellow-active: #FFC860;
+    --yellow-shadow: #CC8B13;
     --dark-navy: #1A2A33;
-    --semi-dark-davy: #1F3641;
+    --semi-dark-navy: #1F3641;
+    --dark-navy-shadow:#10212A;
     --silver: #A8BFC9;
     --silver-active: #DBE8ED;
 }
@@ -17,57 +20,4 @@ body {
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0.875px;
-}
-
-h1, h2, h3, h4 {
-    font-weight: 700;
-}
-
-h1 {
-    font-size: 24px;
-    line-height: 30px;
-    letter-spacing: 1.5px;
-}
-
-h2 {
-    font-size: 20px;
-    line-height: 25px;
-    letter-spacing: 1.25px;
-}
-
-h3, h4 {
-    font-size: 16px;
-    line-height: 20px;
-    letter-spacing: 1px;
-}
-
-
-
-
-@media (min-width: 800px) {
-
-    h1 {
-        font-size: 40px;
-        line-height: 50px;
-        letter-spacing: 2.5px;
-    }
-
-    h2 {
-        font-size: 24px;
-        line-height: 30px;
-        letter-spacing: 1.5px;
-    }
-
-    h3 {
-        font-size: 20px;
-        line-height: 25px;
-        letter-spacing: 1.25px;
-    }
-
-    h4 {
-        font-size: 16px;
-        line-height: 20px;
-        letter-spacing: 1px;
-    }
-
 }
