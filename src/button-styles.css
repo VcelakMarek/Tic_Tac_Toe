@@ -1,0 +1,16 @@
+.new-game {
+    width: 327px;
+    height: 56px;
+    border: none;
+    border-radius: 15px;
+}
+
+.yellow {
+    background: var(--light-yellow);
+    box-shadow: inset 0px -8px 0px var(--yellow-shadow);
+}
+
+.blue {
+    background: var(--light-blue);
+    box-shadow: inset 0px -8px 0px var(--light-blue-shadow);
+}
