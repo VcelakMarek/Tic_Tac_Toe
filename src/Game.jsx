@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import "./styles.css"
 import "./Game-styles.css"
 
 const Game = () => {
+    const [option] = useContext() 
+
+    console.log(option)
+    
     return (
         <body>
             <div className="game">
