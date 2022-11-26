@@ -31,16 +31,20 @@ img {
     border-radius: 5px;
     font-size: 14px;
     line-height: 18px;
-    text-align: center;
     letter-spacing: 0.875px;
     margin-right: 40px;
+    display: flex;
+}
+
+.turn p {
+    margin-top: 9px;
 }
 
 .turn img {
     width: 16px;
     height: 16px;
     margin-top: 10px;
-    margin-left: 5px;
+    margin-left: 13px;
 }
 
 .restart {
