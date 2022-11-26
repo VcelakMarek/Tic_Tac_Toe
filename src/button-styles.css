@@ -1,6 +1,18 @@
-.new-game {
+.long {
     width: 327px;
     height: 56px;
+}
+
+.normal {
+    width: 146px;
+    height: 52px;
+}
+
+.short {
+    
+}
+
+.border-none {
     border: none;
     border-radius: 15px;
 }
@@ -8,9 +20,11 @@
 .yellow {
     background: var(--light-yellow);
     box-shadow: inset 0px -8px 0px var(--yellow-shadow);
+    color: var(--dark-navy);
 }
 
 .blue {
     background: var(--light-blue);
     box-shadow: inset 0px -8px 0px var(--light-blue-shadow);
+    color: var(--dark-navy);
 }
