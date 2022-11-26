@@ -69,15 +69,15 @@ img {
     margin: 40px 24px 20px;
 }
 
-button {
+/* button {
     background: var(--semi-dark-navy);
     height: 96px;
     width: 96px;
     box-shadow: inset 0px -8px 0px var(--dark-navy-shadow);
     border-radius: 15px;
     margin: 0;
-    padding: 0;
-}
+    padding: 0; */
+/* } */
 
 
 .row {
