@@ -1,13 +1,18 @@
 import { createRoot } from "react-dom/client";
+import OptionProvider from "./Option.context";
 import NewGameMenu from "./NewGameMenu";
 import Game from "./Game";
 
 const App = () => {
     return (
-        <div>
-          {/* <NewGameMenu /> */}
-          <Game />
-        </div>
+        <OptionProvider>
+            <div>
+               <NewGameMenu /> 
+              {/* <Game />*/}
+            </div>
+
+        </OptionProvider>
+
     );
 };
 
