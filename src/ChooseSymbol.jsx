@@ -1,29 +1,15 @@
+import { useState, useContext } from "react";
+import { OptionContext } from "./Option.context";
 import "./styles.css"
 import "./ChooseSymbol-styles.css"
-import { useRef, useState } from "react";
 
 const ChooseSymbol = () => {
-    const xButton = useRef();
-    const oButton = useRef();
+    const [option, setOption] = useContext(OptionContext)
 
-    let [optionX, setOptionX] = useState("active");
-    let optionO = "inactive";
-
-    function changePickedMark() {
-
-        setOptionX = "inactive";
-        
-            
-        
-        console.log("optionX",typeof setOptionX)
-        // if (xButton.className === "active") {
-        //     xButton.className = "inactive"
-        //     oButton.className = "active"
-        // } else {
-        //     xButton.className = "active"
-        //     oButton.className = "inactive"
-        // }
-    }
+    // X - true, Y - false
+    // "OPTIONX | OPTIONY"
+    // const [option, setOption] = useState("X");
+    // let optionO = "inactive";
 
     return (
         <div className="card">
@@ -31,18 +17,16 @@ const ChooseSymbol = () => {
             <div className="switch">
                 <div className="switch-option">
                     <button 
-                        ref={xButton}
-                        className={optionX}
-                        onClick={() => {changePickedMark()}}
+                        className={option === "X" ? "active" : "inactive"}
+                        onClick={() => setOption("X")}
                         >
                         <img  src="./assets/icon-x-silver.svg" alt="icon-x" />
                     </button> 
                 </div>
                 <div className="switch-option">
                     <button
-                        ref={oButton}
-                        className={optionO}
-                        onClick={() => {changePickedMark()}}
+                        className={option === "Y" ? "active" : "inactive"}
+                        onClick={() => setOption("Y")}
                         >
                         <img src="./assets/icon-o-silver.svg" alt="icon-o" />
                     </button>
