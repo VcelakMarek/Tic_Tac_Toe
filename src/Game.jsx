@@ -11,7 +11,8 @@ const Game = () => {
                         <img src="./assets/icon-o.svg" alt="icon-o" />
                     </div>
                     <div className="turn">
-                        <img  src="./assets/icon-x-silver.svg" alt="icon-x" />TURN
+                        <img  src="./assets/icon-x-silver.svg" alt="icon-x" />
+                        <p>TURN</p>
                     </div>
                     <button className="restart">
                     <img  src="./assets/icon-restart.svg" alt="restart-icon" />
