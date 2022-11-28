@@ -8,13 +8,16 @@
     height: 52px;
 }
 
-.short {
-    
-}
+ .game-button-size {
+    height: 96px;
+    width: 96px;
+    margin: 0;
+    padding: 0;
+ }
 
-.border-none {
-    border: none;
-    border-radius: 15px;
+.dark-navy {
+    background: var(--semi-dark-navy);
+    box-shadow: inset 0px -8px 0px var(--dark-navy-shadow);
 }
 
 .yellow {
@@ -27,4 +30,16 @@
     background: var(--light-blue);
     box-shadow: inset 0px -8px 0px var(--light-blue-shadow);
     color: var(--dark-navy);
+}
+
+.silver {
+    background-color: silver;
+    box-shadow: inset 0px -8px 0px var(--grey-shadow);
+    color: var(--dark-navy)
+}
+
+
+.border-none {
+    border: none;
+    border-radius: 15px;
 }
