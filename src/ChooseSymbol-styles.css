@@ -55,7 +55,7 @@ img {
     margin-top: 4px;
 }
 
-button {
+.switch-option button {
     border: none;
     width: 123px;
     height: 54px;
@@ -63,4 +63,11 @@ button {
     margin: 8px;
     margin-top: 9px;
     cursor: pointer;
+}
+
+.new-game-buttons {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 16px;
+    margin: 16px auto;
 }
