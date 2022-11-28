@@ -2,24 +2,36 @@ import "./styles.css";
 import "./button-styles.css"
 
 const color = {
-    primary: "yellow",
-    secondary: "silver"
+    newGameCPU: "yellow",
+    newGamePlayer: "blue",
+    silver: "silver",
+    yellow: "yellow",
+    icon: "silver",
+    gameButton: "dark-navy"
 }
 
 const size = {
-    primary: "long" 
+    newGameCPU: "long",
+    newGamePlayer: "long",
+    icon: "small",
+    gameButton: "game-button-size" 
 }
 
 const border = {
-    primary: "border-none"
+    newGameCPU: "border-none",
+    newGamePlayer: "border-none",
+    silver: "border-none",
+    yellow: "border-none",
+    icon: "border-none",
+    gameButton: "border-none"
 }
 
-const Button ({ variant = "primary" }) => {
+const Button = ( props = "gameButton" ) => {
 
     let baseClasses = [
-        color[variant],
-        size[variant],
-        border[variant]
+        color[props.variant],
+        size[props.variant],
+        border[props.variant]
     ]
 
     return (
