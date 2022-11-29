@@ -22,3 +22,10 @@ body {
     line-height: 18px;
     letter-spacing: 0.875px;
 }
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* background-color: var(--dark-navy-shadow); */
+}
