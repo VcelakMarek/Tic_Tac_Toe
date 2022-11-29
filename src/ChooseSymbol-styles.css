@@ -35,9 +35,7 @@ h2 {
     display: flex;
 }
 
-.switch-option {
-    text-align: center;
-}
+
 
 .active {
     background-color: var(--silver);
@@ -50,9 +48,14 @@ h2 {
     background-color: var(--dark-navy);
 }
 
-img {
+.inactive:hover {
+    background-color: rgba(167, 190, 200, 0.1);
+}
+
+button img {
     width: 32px;
     margin-top: 4px;
+    margin-right: 0;
 }
 
 .switch-option button {
@@ -63,11 +66,4 @@ img {
     margin: 8px;
     margin-top: 9px;
     cursor: pointer;
-}
-
-.new-game-buttons {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 16px;
-    margin: 16px auto;
 }
