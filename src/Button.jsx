@@ -6,27 +6,32 @@ const color = {
     newGamePlayer: "blue",
     silver: "silver",
     yellow: "yellow",
-    icon: "silver",
+    restart: "silver",
     gameButton: "dark-navy"
 }
 
 const size = {
     newGameCPU: "long",
     newGamePlayer: "long",
-    icon: "small",
+    restart: "small",
     gameButton: "game-button-size" 
 }
 
 const border = {
-    newGameCPU: "border-none",
-    newGamePlayer: "border-none",
-    silver: "border-none",
-    yellow: "border-none",
-    icon: "border-none",
-    gameButton: "border-none"
+    newGameCPU: "border-radius-15px",
+    newGamePlayer: "border-radius-15px",
+    silver: "border-radius-15px",
+    yellow: "border-radius-15px",
+    restart: "border-radius-5px",
+    gameButton: "border-radius-15px"
 }
 
-const Button = ( props = "gameButton" ) => {
+const text = {
+    newGameCPU: "NEW GAME  (VS CPU)",
+    newGamePlayer: "NEW GAME  (VS PLAYER)"
+}
+
+const Button = ( props ) => {
 
     let baseClasses = [
         color[props.variant],
@@ -34,11 +39,25 @@ const Button = ( props = "gameButton" ) => {
         border[props.variant]
     ]
 
+    if (props.variant != "gameButton"){
+        return(
+            <button
+            className={baseClasses.join(" ")}>
+            {props.children}
+            </button>
+            )
+
+    }  else {
+
     return (
+
         <button
         className={baseClasses.join(" ")}>
+        <p>{text[props.variant]}</p>
         </button>
     )
+
+}
 }
 
 export default Button;
