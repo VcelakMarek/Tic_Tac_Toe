@@ -2,13 +2,11 @@ import { useContext } from "react";
 import { OptionContext } from "./Option.context";
 import "./styles.css"
 import "./ChooseSymbol-styles.css"
-import Button from "./Button";
 
 const ChooseSymbol = () => {
     const [option, setOption] = useContext(OptionContext)
 
     return (
-        <div>
             <div className="card">
                 <h1>PICK PLAYER 1`S MARK</h1>
                 <div className="switch">
@@ -22,8 +20,8 @@ const ChooseSymbol = () => {
                     </div>
                     <div className="switch-option">
                         <button
-                            className={option === "Y" ? "active" : "inactive"}
-                            onClick={() => setOption("Y")}
+                            className={option === "O" ? "active" : "inactive"}
+                            onClick={() => setOption("O")}
                             >
                             <img src="./assets/icon-o-silver.svg" alt="icon-o" />
                         </button>
@@ -31,11 +29,6 @@ const ChooseSymbol = () => {
                 </div>
                 <h2>REMEMBER: X GOES FIRST</h2>
             </div>
-            <div className="new-game-buttons">
-                <Button variant="newGameCPU"></Button>
-                <Button variant="newGamePlayer" />
-            </div>
-        </div>
     )
 }
 
