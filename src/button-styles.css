@@ -1,6 +1,6 @@
-.long {
-    width: 327px;
-    height: 56px;
+.small {
+    width: 40px;
+    height: 40px;
 }
 
 .normal {
@@ -8,7 +8,17 @@
     height: 52px;
 }
 
- .game-button-size {
+.long {
+    width: 327px;
+    height: 56px;
+}
+
+.small img {
+    width: 15px;
+    height: 15px;
+}
+
+.game-button-size {
     height: 96px;
     width: 96px;
     margin: 0;
@@ -20,10 +30,15 @@
     box-shadow: inset 0px -8px 0px var(--dark-navy-shadow);
 }
 
+
 .yellow {
     background: var(--light-yellow);
     box-shadow: inset 0px -8px 0px var(--yellow-shadow);
     color: var(--dark-navy);
+}
+
+.yellow:active {
+    background-color: var(--light-yellow-active);
 }
 
 .blue {
@@ -32,14 +47,44 @@
     color: var(--dark-navy);
 }
 
+.blue:active {
+    background-color: var(--light-blue-active);
+}
+
 .silver {
-    background-color: silver;
-    box-shadow: inset 0px -8px 0px var(--grey-shadow);
-    color: var(--dark-navy)
+    background-color: var(--silver);
+    box-shadow: inset 0px -4px 0px var(--silver-shadow);
 }
 
+.silver:active {
+    background-color: var(--silver-active);
+}
 
-.border-none {
-    border: none;
+.border-radius-15px {
     border-radius: 15px;
+    border: none;
 }
+
+.border-radius-5px {
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button p {
+    box-sizing: border-box;
+    margin-top: 10px;
+    vertical-align: center;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+}
+
+
+
