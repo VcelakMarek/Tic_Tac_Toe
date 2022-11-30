@@ -1,3 +1,6 @@
+import { useContext, useState } from "react";
+import { OptionContext } from "./Option.context";
+
 import "./styles.css";
 import "./button-styles.css"
 
@@ -31,31 +34,56 @@ const text = {
     newGamePlayer: "NEW GAME  (VS PLAYER)"
 }
 
-const Button = ( props ) => {
+const Button = ( {variant = "gameButton"} ) => {
 
+    const [option, setOption] = useContext(OptionContext);
+    const [hoverX, setHoverX] = useState("invisible");
+    const [hoverO, setHoverO] = useState("invisible");
+    const [displayMark, setDisplayMark] = useState("invisible");
+    
     let baseClasses = [
-        color[props.variant],
-        size[props.variant],
-        border[props.variant]
+        color[variant],
+        size[variant],
+        border[variant]
     ]
 
-    if (props.variant != "gameButton"){
+    function handleGameButtonCLick(e) {
+        setDisplayMark("visible");
+        setHoverX("invisible");
+        setHoverO("invisible");
+        option === "X" ? setOption("O") : setOption("X")
+    }
+
+    if (variant === "restart"){
         return(
             <button
             className={baseClasses.join(" ")}>
-            {props.children}
+            <img  src="./assets/icon-restart.svg" alt="restart-icon" />
             </button>
             )
 
-    }  else {
+    }  else if (variant === "gameButton") { 
+        return(
+            <button 
+            onMouseEnter={() => option === "X" ? setHoverX("visible") : setHoverO("visible")}
+            onMouseLeave={() => option === "X" ? setHoverX("invisible") : setHoverO("invisible")}
+            onClick={(e) => handleGameButtonCLick(e)}
+            className={baseClasses.join(" ")}>
+            <img className={option === "X" ? displayMark : "invisible"} src="./assets/icon-x.svg" alt="icon-x"></img>
+            <img className={option === "O" ? displayMark : "invisible"} src="./assets/icon-o.svg" alt="icon-o"></img>
+            <img className={hoverX} src="./assets/icon-x-outline.svg" alt="icon-x-outline"></img>
+            <img className={hoverO} src="./assets/icon-o-outline.svg" alt="icon-o-outline"></img>
+            </button>
+            )
+    
+    } else {
+        return (
 
-    return (
-
-        <button
-        className={baseClasses.join(" ")}>
-        <p>{text[props.variant]}</p>
-        </button>
-    )
+            <button
+            className={baseClasses.join(" ")}>
+            <p>{text[variant]}</p>
+            </button>
+        )
 
 }
 }
