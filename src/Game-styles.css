@@ -97,24 +97,9 @@ img {
     letter-spacing: 0.75px;
 }
 
-.display-none {
-    display: none;
+.invisible {
+    display:  none;
 }
-
-
-
-
-/* icons in button styles */
-
-
-.game-board img {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 24px;
-    text-align: center;
-    display: none;
-}
-
 
 .visible {
     display: block;
