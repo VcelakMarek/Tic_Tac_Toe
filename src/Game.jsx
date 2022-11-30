@@ -5,8 +5,8 @@ import "./styles.css"
 import "./Game-styles.css"
 
 const Game = () => {
-    const [option] = useContext(OptionContext) 
-    console.log(option)
+    const [option] = useContext(OptionContext) ;
+    console.log(option);
 
 
     const [visible,setVisible] = useState(false);
@@ -19,39 +19,29 @@ const Game = () => {
                     <img src="./assets/icon-o.svg" alt="icon-o" />
                 </div>
                 <div className="turn">
-                    <img  src="./assets/icon-x-silver.svg" alt="icon-x"/>
+                    <img className={option ==="X" ? "visible" : "invisible"} src="./assets/icon-x-silver.svg" alt="icon-x"/>
+                    <img className={option ==="O" ? "visible" : "invisible"} src="./assets/icon-o-silver.svg" alt="icon-x"/>
+
                     <p>TURN</p>
                 </div>
-                <Button variant="restart">
-                    <img  src="./assets/icon-restart.svg" alt="restart-icon" />
-                </Button>
+                    <Button variant="restart" />
             </div>  
 
             <div className="game-board">
                 <div className="row">
-                    <Button variant="gameButton" >
-                        <img src="./assets/icon-x.svg" alt="icon-x" />
-                    </Button>
-                                                
-                    <Button variant="gameButton"
-                        onClick={() => {
-                            setVisible(true);
-                        }} >
-                        <img src="assets\icon-x-outline.svg" alt="icon-x-outline"
-                        className={visible===true ? "visible" : "invisible"}
-                        />
-                    </Button>
-                    <Button variant="gameButton" ></Button>
+                    <Button />
+                    <Button />
+                    <Button />
                 </div>
                 <div className="row">
-                    <Button variant="gameButton" ></Button>
-                    <Button variant="gameButton" ></Button>
-                    <Button variant="gameButton" ></Button>
+                    <Button />
+                    <Button />
+                    <Button />
                 </div>
                 <div className="row">
-                    <Button variant="gameButton" ></Button>
-                    <Button variant="gameButton" ></Button>
-                    <Button variant="gameButton" ></Button>
+                    <Button />
+                    <Button />
+                    <Button />
                 </div>
             </div>
             <div className="game-info row">
