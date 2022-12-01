@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
 import { OptionContext } from "./Option.context";
+import { MyContext } from "./MyContext";
 import Button from "./Button";
+import Modal from "./Modal"
 import "./styles.css"
 import "./Game-styles.css"
 
 const Game = () => {
-    const [option,setOption] = useContext(OptionContext) ;
+    const [option,setOption] = useContext(OptionContext);
+    const [displayX, setDisplayX] = useContext(MyContext);
+    const [displayO, setDisplayO] = useContext(MyContext);
     console.log(option);
     
     const [boardValues] = useState([
@@ -13,6 +17,8 @@ const Game = () => {
         ["", "", ""],
         ["", "", ""]
     ])
+
+    const [showModal, setShowModal] = useState(false);
 
     // 00 01 02
     // 10 11 12
@@ -23,9 +29,9 @@ const Game = () => {
     function handleCLick(x, y) {
         let boardChange = {...boardValues}
         if (boardChange[x][y] === "") {
-            
+
             boardChange[x][y] = option
-            option === "X" ? setOption("O") : setOption("X") 
+            option === "X" ? (setOption("O"),setDisplayO("visible")) : (setOption("X"),setDisplayX("visible"))
             console.log(boardValues);
 
             let diagonal1 = [boardValues[0][0],boardValues[1][1],boardValues[2][2]];
@@ -43,19 +49,25 @@ const Game = () => {
                     ];
             }
 
-            let column1 = [boardValues[0][0],boardValues[1][0],boardValues[2][0]];
-            let column2 = [boardValues[0][1],boardValues[1][1],boardValues[2][1]];
-            let column3 = [boardValues[0][2],boardValues[1][2],boardValues[2][2]];
 
-            for (let j=0; j<=2; j++) {
-                for (let i=0; i<=2; i++) {
-                    console.log("columns", boardValues[i][j]);
-                    let array = boardValues[i][j];
-                    let columnValue =[];
-                    columnValue.push(array)
-                    console.log("columnWalue:",columnValue)
-                }
-            }
+            // let column1 = [boardValues[0][0],boardValues[1][0],boardValues[2][0]];
+            // let column2 = [boardValues[0][1],boardValues[1][1],boardValues[2][1]];
+            // let column3 = [boardValues[0][2],boardValues[1][2],boardValues[2][2]];
+            // let columnValue1 = [];
+            // let columnValue2 = [];
+            // let columnValue3 = [];
+
+            // for (let j=0; j<=2; j++) {
+            //     for (let i=0; i<=2; i++) {
+            //         console.log("columns", boardValues[i][j]);
+            //         let array = boardValues[i][j];
+            //         let columnValue = `columnValue${j}`
+            //         console.log("columnvalue", columnValue)
+
+            //         columnValue.push(array)
+            //         console.log("columnWalue:",columnValue)
+            //     }
+            // }
 
 
 
@@ -134,6 +146,22 @@ const Game = () => {
                     <p className="value">20</p>
                 </div>
             </div>
+
+            {
+                showModal ?
+                (
+                    <Modal>
+                        <div>
+                            <Button variant="newGameCPU">
+</Button>
+                            <Button variant="newGameCPU">
+
+                            </Button>
+                        </div>
+                    </Modal>
+                ) : null
+            }
+
         </div>
 
     );
