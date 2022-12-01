@@ -34,25 +34,20 @@ const text = {
     newGamePlayer: "NEW GAME  (VS PLAYER)"
 }
 
-const Button = ( {variant = "gameButton"} ) => {
+const Button = ( {variant = "gameButton", ...props} ) => {
 
     const [option, setOption] = useContext(OptionContext);
     const [hoverX, setHoverX] = useState("invisible");
     const [hoverO, setHoverO] = useState("invisible");
     const [displayMark, setDisplayMark] = useState("invisible");
+
+
     
     let baseClasses = [
         color[variant],
         size[variant],
         border[variant]
     ]
-
-    function handleGameButtonCLick(e) {
-        setDisplayMark("visible");
-        setHoverX("invisible");
-        setHoverO("invisible");
-        option === "X" ? setOption("O") : setOption("X")
-    }
 
     if (variant === "restart"){
         return(
@@ -65,9 +60,10 @@ const Button = ( {variant = "gameButton"} ) => {
     }  else if (variant === "gameButton") { 
         return(
             <button 
+            value={props.value}
             onMouseEnter={() => option === "X" ? setHoverX("visible") : setHoverO("visible")}
             onMouseLeave={() => option === "X" ? setHoverX("invisible") : setHoverO("invisible")}
-            onClick={(e) => handleGameButtonCLick(e)}
+            onClick={props.onclick}
             className={baseClasses.join(" ")}>
             <img className={option === "X" ? displayMark : "invisible"} src="./assets/icon-x.svg" alt="icon-x"></img>
             <img className={option === "O" ? displayMark : "invisible"} src="./assets/icon-o.svg" alt="icon-o"></img>
