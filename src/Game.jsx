@@ -5,11 +5,63 @@ import "./styles.css"
 import "./Game-styles.css"
 
 const Game = () => {
-    const [option] = useContext(OptionContext) ;
+    const [option,setOption] = useContext(OptionContext) ;
     console.log(option);
+    
+    const [boardValues] = useState([
+        ["" ,"" ,""],
+        ["", "", ""],
+        ["", "", ""]
+    ])
+
+    // 00 01 02
+    // 10 11 12
+    // 20 21 22
+
+    console.log(boardValues)
+
+    function handleCLick(x, y) {
+        let boardChange = {...boardValues}
+        if (boardChange[x][y] === "") {
+            
+            boardChange[x][y] = option
+            option === "X" ? setOption("O") : setOption("X") 
+            console.log(boardValues);
+
+            let diagonal1 = [boardValues[0][0],boardValues[1][1],boardValues[2][2]];
+            let diagonal2 = [boardValues[0][2],boardValues[1][1],boardValues[2][0]];
+
+            let xWin = ["X", "X", "X"];
+            let OWin = ["O", "O", "O"];
+
+            for (let i=0; i<=2; i++) {
+                boardValues[i].toString() === xWin.toString() 
+                    ? console.log("X WIN") 
+                    : [ boardValues[i].toString() === OWin.toString()
+                        ? console.log("O WIN") 
+                        : console.log("false")
+                    ];
+            }
+
+            // for (let i=0; i<=2; i++) {
+            //     console.log("columns", boardValues[0][i]);
+            //     let array = boardValues[0][i];
+            //     let columnValue;
+            //     columnValue.push(array)
+            //     console.log("columnWalue:",columnValue)
+            // }
 
 
-    const [visible,setVisible] = useState(false);
+
+            diagonal1.toString() === xWin.toString() 
+            ? console.log("X WIN") 
+            : [ diagonal2.toString() === OWin.toString()
+                ? console.log("O WIN") 
+                : console.log("false")];
+        }
+
+    }
+
 
     return (
         <div className="game">
@@ -29,19 +81,37 @@ const Game = () => {
 
             <div className="game-board">
                 <div className="row">
-                    <Button />
-                    <Button />
-                    <Button />
+                    <Button
+                    onclick={() => handleCLick("0","0")}
+                    />
+                    <Button
+                    onclick={() => handleCLick("0","1")}
+                    />
+                    <Button
+                    onclick={() => handleCLick("0","2")}
+                    />
                 </div>
                 <div className="row">
-                    <Button />
-                    <Button />
-                    <Button />
+                <Button
+                    onclick={() => handleCLick("1","0")}
+                    />
+                    <Button
+                    onclick={() => handleCLick("1","1")}
+                    />
+                    <Button
+                    onclick={() => handleCLick("1","2")}
+                    />
                 </div>
                 <div className="row">
-                    <Button />
-                    <Button />
-                    <Button />
+                <Button
+                    onclick={() => handleCLick("2","0")}
+                    />
+                    <Button
+                    onclick={() => handleCLick("2","1")}
+                    />
+                    <Button
+                    onclick={() => handleCLick("2","2")}
+                    />
                 </div>
             </div>
             <div className="game-info row">
