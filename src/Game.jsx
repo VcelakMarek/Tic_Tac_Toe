@@ -43,13 +43,19 @@ const Game = () => {
                     ];
             }
 
-            // for (let i=0; i<=2; i++) {
-            //     console.log("columns", boardValues[0][i]);
-            //     let array = boardValues[0][i];
-            //     let columnValue;
-            //     columnValue.push(array)
-            //     console.log("columnWalue:",columnValue)
-            // }
+            let column1 = [boardValues[0][0],boardValues[1][0],boardValues[2][0]];
+            let column2 = [boardValues[0][1],boardValues[1][1],boardValues[2][1]];
+            let column3 = [boardValues[0][2],boardValues[1][2],boardValues[2][2]];
+
+            for (let j=0; j<=2; j++) {
+                for (let i=0; i<=2; i++) {
+                    console.log("columns", boardValues[i][j]);
+                    let array = boardValues[i][j];
+                    let columnValue =[];
+                    columnValue.push(array)
+                    console.log("columnWalue:",columnValue)
+                }
+            }
 
 
 
