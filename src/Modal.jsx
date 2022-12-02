@@ -1,20 +1,30 @@
-import { useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
+import CreateModal from "./CreateModal"
+import Button from "./Button"
 
-const Modal = ({ children }) => {
-    const elRef = useRef(null);
-        if (!elRef.current) {
-            elRef.current = document.createElement("div");
-        }
+const text = {
+    xWin: ["X TAKES THE ROUND",],
+    oWin: "O TAKES THE ROUND",
+    tied: "ROUND TIED",
+    restartGame: "RESTART GAME"
+}
 
-        useEffect(() => {
-            const modalRoot = document.getElementById("modal");
-            modalRoot.appendChild(elRef.current);
-
-            return () => modalRoot.removeChild(elRef.current)
-        }, []);
-
-        return createPortal(<div>{children}</div>, elRef.current);
-};
+const Modal = ({variant}) => {
+    return (
+        <CreateModal>
+            <div>
+                <h2>text</h2>
+                <h1>{text[variant]}</h1>
+                <div className="buttons">
+                    <Button variant="silver">
+                        <p>QUIT</p>
+                    </Button>
+                    <Button variant="yellow">
+                        <p>NEXT ROUND</p>
+                    </Button>
+                </div>
+            </div>
+        </CreateModal>
+    )
+}
 
 export default Modal;
