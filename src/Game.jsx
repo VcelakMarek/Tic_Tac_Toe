@@ -2,14 +2,14 @@ import { useContext, useState } from "react";
 import { OptionContext } from "./Option.context";
 import { MyContext } from "./MyContext";
 import Button from "./Button";
-import Modal from "./Modal"
+import Modal from "./Modal";
 import "./styles.css"
 import "./Game-styles.css"
 
 const Game = () => {
     const [option,setOption] = useContext(OptionContext);
-    const [displayX, setDisplayX] = useContext(MyContext);
-    const [displayO, setDisplayO] = useContext(MyContext);
+    // const [displayX, setDisplayX] = useContext(MyContext);
+    // const [displayO, setDisplayO] = useContext(MyContext);
     console.log(option);
     
     const [boardValues] = useState([
@@ -18,7 +18,7 @@ const Game = () => {
         ["", "", ""]
     ])
 
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(true);
 
     // 00 01 02
     // 10 11 12
@@ -26,13 +26,25 @@ const Game = () => {
 
     console.log(boardValues)
 
-    function handleCLick(x, y) {
+    function handleCLick(e, x, y) {
         let boardChange = {...boardValues}
         if (boardChange[x][y] === "") {
 
+            let childrens = e.currentTarget.children
+            let visibleIndex = 0;
+
             boardChange[x][y] = option
-            option === "X" ? (setOption("O"),setDisplayO("visible")) : (setOption("X"),setDisplayX("visible"))
+            option === "X" 
+            ? (setOption("O"))
+            : (setOption("X"),visibleIndex = 1)
             console.log(boardValues);
+
+
+            // e.currentTarget.classList.add("x-win")
+            childrens[visibleIndex].className = "visible";
+            childrens[2,3].remove();
+
+        
 
             let diagonal1 = [boardValues[0][0],boardValues[1][1],boardValues[2][2]];
             let diagonal2 = [boardValues[0][2],boardValues[1][1],boardValues[2][0]];
@@ -100,35 +112,35 @@ const Game = () => {
             <div className="game-board">
                 <div className="row">
                     <Button
-                    onclick={() => handleCLick("0","0")}
+                    onclick={(e) => handleCLick(e,"0","0")}
                     />
                     <Button
-                    onclick={() => handleCLick("0","1")}
+                    onclick={(e) => handleCLick(e,"0","1")}
                     />
                     <Button
-                    onclick={() => handleCLick("0","2")}
+                    onclick={(e) => handleCLick(e,"0","2")}
                     />
                 </div>
                 <div className="row">
                 <Button
-                    onclick={() => handleCLick("1","0")}
+                    onclick={(e) => handleCLick(e,"1","0")}
                     />
                     <Button
-                    onclick={() => handleCLick("1","1")}
+                    onclick={(e) => handleCLick(e,"1","1")}
                     />
                     <Button
-                    onclick={() => handleCLick("1","2")}
+                    onclick={(e) => handleCLick(e,"1","2")}
                     />
                 </div>
                 <div className="row">
                 <Button
-                    onclick={() => handleCLick("2","0")}
+                    onclick={(e) => handleCLick(e,"2","0")}
                     />
                     <Button
-                    onclick={() => handleCLick("2","1")}
+                    onclick={(e) => handleCLick(e,"2","1")}
                     />
                     <Button
-                    onclick={() => handleCLick("2","2")}
+                    onclick={(e) => handleCLick(e,"2","2")}
                     />
                 </div>
             </div>
@@ -150,15 +162,7 @@ const Game = () => {
             {
                 showModal ?
                 (
-                    <Modal>
-                        <div>
-                            <Button variant="newGameCPU">
-</Button>
-                            <Button variant="newGameCPU">
-
-                            </Button>
-                        </div>
-                    </Modal>
+                    <Modal />
                 ) : null
             }
 
