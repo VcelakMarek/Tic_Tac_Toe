@@ -32,7 +32,7 @@
 
 .yellow {
     background: var(--light-yellow);
-    box-shadow: inset 0px -8px 0px var(--yellow-shadow);
+    box-shadow: inset 0px -8px 0px var(--light-yellow-shadow);
     color: var(--dark-navy);
 }
 
@@ -99,4 +99,22 @@ button p {
 
 .visible {
     display: block;
+}
+
+.x-win {
+    background-color: var(--light-blue);
+    box-shadow: inset 0px -8px 0px var(--light-blue-shadow);
+}
+
+.x-win img {
+    filter: brightness(0) saturate(100%) invert(15%) sepia(7%) saturate(3895%) hue-rotate(155deg) brightness(90%) contrast(84%);
+}
+
+.o-win {
+    background-color: var(--light-yellow);
+    box-shadow: inset 0px -8px 0px var(--light-yellow-shadow);
+}
+
+.o-win img {
+    filter: brightness(0) saturate(100%) invert(15%) sepia(7%) saturate(3895%) hue-rotate(155deg) brightness(90%) contrast(84%);
 }
