@@ -162,7 +162,10 @@ const Game = () => {
             {
                 showModal ?
                 (
-                    <Modal />
+                    <Modal 
+                    variant="xWin"
+                    text="player 1 win"
+                    />
                 ) : null
             }
 
