@@ -9,7 +9,7 @@ const color = {
     newGameCPU: "yellow",
     newGamePlayer: "blue",
     silver: "silver",
-    yellow: "yellow",
+    yellow: "yellow box-shadow-4px",
     restart: "silver",
     gameButton: "dark-navy"
 }
@@ -18,14 +18,16 @@ const size = {
     newGameCPU: "long",
     newGamePlayer: "long",
     restart: "small",
-    gameButton: "game-button-size" 
+    gameButton: "game-button-size",
+    silver: "height-52px",
+    yellow: "height-52px"
 }
 
 const border = {
     newGameCPU: "border-radius-15px",
     newGamePlayer: "border-radius-15px",
-    silver: "border-radius-15px",
-    yellow: "border-radius-15px",
+    silver: "border-radius-10px",
+    yellow: "border-radius-10px",
     restart: "border-radius-5px",
     gameButton: "border-radius-15px"
 }
