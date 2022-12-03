@@ -1,25 +1,39 @@
 import CreateModal from "./CreateModal"
 import Button from "./Button"
+import "./Modal-styles.css"
 
 const text = {
-    xWin: ["X TAKES THE ROUND",],
-    oWin: "O TAKES THE ROUND",
+    xWin: "TAKES THE ROUND",
+    oWin: "TAKES THE ROUND",
     tied: "ROUND TIED",
     restartGame: "RESTART GAME"
 }
 
-const Modal = ({variant}) => {
+const color = {
+    xWin: "color-light-blue",
+    oWin: "color-light-yellow"
+}
+
+const img = {
+    xWin: <img src="./assets/icon-x.svg" alt="icon-x"></img>,
+    ywin: <img src="./assets/icon-o.svg" alt="icon-o"></img>
+}
+
+const Modal = ({variant, ...props}) => {
     return (
         <CreateModal>
-            <div>
-                <h2>text</h2>
-                <h1>{text[variant]}</h1>
+            <div className={color[variant]}>
+                <h2>{props.text}</h2>
+                <h1>
+                    <p>{img[variant]}</p>
+                    <p>{text[variant]}</p>
+                </h1>
                 <div className="buttons">
                     <Button variant="silver">
-                        <p>QUIT</p>
+                        <p>{variant === "restartGame" ? ("NO, CANCEL") : ("QUIT")}</p>
                     </Button>
                     <Button variant="yellow">
-                        <p>NEXT ROUND</p>
+                        <p>{variant === "restartGame" ? ("YES, RESTART") : ("NEXT ROUND")}</p>
                     </Button>
                 </div>
             </div>
