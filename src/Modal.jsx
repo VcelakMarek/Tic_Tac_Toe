@@ -1,5 +1,7 @@
+import { useContext } from "react"
 import CreateModal from "./CreateModal"
 import Button from "./Button"
+import { MyContext } from "./MyContext"
 import "./Modal-styles.css"
 
 const text = {
@@ -16,7 +18,7 @@ const color = {
 
 const img = {
     xWin: <img src="./assets/icon-x.svg" alt="icon-x"></img>,
-    ywin: <img src="./assets/icon-o.svg" alt="icon-o"></img>
+    oWin: <img src="./assets/icon-o.svg" alt="icon-o"></img>
 }
 
 const Modal = ({variant, ...props}) => {
@@ -29,10 +31,14 @@ const Modal = ({variant, ...props}) => {
                     <p>{text[variant]}</p>
                 </h1>
                 <div className="buttons">
-                    <Button variant="silver">
+                    <Button 
+                        variant="silver" 
+                        onclick={props.onclick}>
                         <p>{variant === "restartGame" ? ("NO, CANCEL") : ("QUIT")}</p>
                     </Button>
-                    <Button variant="yellow">
+                    <Button 
+                        variant="yellow"
+                        onclick={props.onclick}>
                         <p>{variant === "restartGame" ? ("YES, RESTART") : ("NEXT ROUND")}</p>
                     </Button>
                 </div>
