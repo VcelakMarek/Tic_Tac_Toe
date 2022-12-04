@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { OptionContext } from "./Option.context";
-import { MyContext } from "./MyContext";
 import Button from "./Button";
 import Modal from "./Modal";
 import "./styles.css"
@@ -10,7 +9,11 @@ const Game = () => {
     const [option,setOption] = useContext(OptionContext);
     // const [displayX, setDisplayX] = useContext(MyContext);
     // const [displayO, setDisplayO] = useContext(MyContext);
-    console.log(option);
+    // const [showModal, setShowModal] = useContext(MyContext);
+    // const {displayX, setDisplayX,
+    //     displayO, setDisplayO,
+    //    showModal, setShowModal} = useContext(MyContext);
+    // console.log(option);
     
     const [boardValues] = useState([
         ["" ,"" ,""],
@@ -18,7 +21,8 @@ const Game = () => {
         ["", "", ""]
     ])
 
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const [modalVariant, setModalVariant] = useState("oWin");
 
     // 00 01 02
     // 10 11 12
@@ -42,7 +46,8 @@ const Game = () => {
 
             // e.currentTarget.classList.add("x-win")
             childrens[visibleIndex].className = "visible";
-            childrens[2,3].remove();
+            childrens[2].remove();
+            childrens[2].remove();
 
         
 
@@ -54,9 +59,9 @@ const Game = () => {
 
             for (let i=0; i<=2; i++) {
                 boardValues[i].toString() === xWin.toString() 
-                    ? console.log("X WIN") 
+                    ? [console.log("X WIN"), setShowModal(true), setModalVariant("xWin") ]
                     : [ boardValues[i].toString() === OWin.toString()
-                        ? console.log("O WIN") 
+                        ? [console.log("O WIN"), setShowModal(true), setModalVariant("oWin")] 
                         : console.log("false")
                     ];
             }
@@ -84,9 +89,16 @@ const Game = () => {
 
 
             diagonal1.toString() === xWin.toString() 
-            ? console.log("X WIN") 
-            : [ diagonal2.toString() === OWin.toString()
-                ? console.log("O WIN") 
+            ? [console.log("X WIN"), setShowModal(true), setModalVariant("xWin")]
+            : [diagonal1.toString() === OWin.toString()
+                ? [console.log("O WIN"), setShowModal(true), setModalVariant("oWin")] 
+                : console.log("false")];
+
+            
+            diagonal2.toString() === xWin.toString() 
+            ? [console.log("X WIN"), setShowModal(true), setModalVariant("xWin")]
+            : [diagonal2.toString() === OWin.toString()
+                ? [console.log("O WIN"), setShowModal(true), setModalVariant("oWin")] 
                 : console.log("false")];
         }
 
@@ -162,8 +174,8 @@ const Game = () => {
             {
                 showModal ?
                 (
-                    <Modal 
-                    variant="xWin"
+                    <Modal
+                    variant={modalVariant}
                     text="player 1 win"
                     />
                 ) : null
