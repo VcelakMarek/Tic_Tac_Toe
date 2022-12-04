@@ -69,8 +69,8 @@ const Button = ( {variant = "gameButton", children, ...props} ) => {
             className={baseClasses.join(" ")}>
                 <img className="invisible" src="./assets/icon-x.svg" alt="icon-x"></img>
                 <img className="invisible" src="./assets/icon-o.svg" alt="icon-o"></img>
-                <img className={hoverX} src="./assets/icon-x-outline.svg" alt="icon-x-outline"></img>
-                <img className={hoverO} src="./assets/icon-o-outline.svg" alt="icon-o-outline"></img>
+                <img className={hoverX} src="./assets/icon-x-outline.svg" alt="icon-x-hover"></img>
+                <img className={hoverO} src="./assets/icon-o-outline.svg" alt="icon-o-hover"></img>
             </button>
             )
     
@@ -85,6 +85,7 @@ const Button = ( {variant = "gameButton", children, ...props} ) => {
         return (
             <button
             className={baseClasses.join(" ")}>
+                {props.onclick}
                 {children}
             </button>
         )
