@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { OptionContext } from "./Option.context";
 import { MyContext } from "./MyContext";
 
@@ -54,7 +55,8 @@ const Button = ( {variant = "gameButton", children, ...props} ) => {
     if (variant === "restart"){
         return(
             <button
-            className={baseClasses.join(" ")}>
+            className={baseClasses.join(" ")}
+            onClick={props.onClick}>
             <img  src="./assets/icon-restart.svg" alt="restart-icon" />
             </button>
             )
@@ -83,11 +85,13 @@ const Button = ( {variant = "gameButton", children, ...props} ) => {
         )
     } else {
         return (
-            <button
-            className={baseClasses.join(" ")}>
-                {props.onclick}
-                {children}
-            </button>
+            <Link to={props.link}>
+                <button
+                className={baseClasses.join(" ")}
+                onClick={props.onclick}>
+                    {children}
+                </button>
+            </Link>
         )
     }
 }
