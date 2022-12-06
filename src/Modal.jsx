@@ -21,17 +21,29 @@ const img = {
     oWin: <img src="./assets/icon-o.svg" alt="icon-o"></img>
 }
 
+// const link = {
+
+// }
+
+const winInfo = {
+    lost: "OH NO, YOU LOST…",
+    won: "YOU WON!",
+    player1: "PLAYER 1 WINS!",
+    player2: "PLAYER 2 WINS!"
+}
+
 const Modal = ({variant, ...props}) => {
     return (
         <CreateModal>
             <div className={color[variant]}>
-                <h2>{props.text}</h2>
+                <h2>{winInfo[props.winner]}</h2>
                 <h1>
                     <p>{img[variant]}</p>
                     <p>{text[variant]}</p>
                 </h1>
                 <div className="buttons">
                     <Button 
+                        link="/game"
                         variant="silver" 
                         onclick={props.onclick}>
                         <p>{variant === "restartGame" ? ("NO, CANCEL") : ("QUIT")}</p>
