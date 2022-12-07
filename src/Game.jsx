@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { OptionContext } from "./Option.context";
 import Button from "./Button";
 import Modal from "./Modal";
@@ -7,6 +7,8 @@ import "./Game-styles.css"
 import reset from "./reset";
 
 const Game = () => {
+
+    
     const [option,setOption] = useContext(OptionContext);
     // const [displayX, setDisplayX] = useContext(MyContext);
     // const [displayO, setDisplayO] = useContext(MyContext);
@@ -17,15 +19,22 @@ const Game = () => {
     // console.log(option);
     
     const [boardValues, setBoardValues] = useState([
-        ["" ,"" ,""],
+        ["", "", ""],
         ["", "", ""],
         ["", "", ""]
     ])
 
     const [showModal, setShowModal] = useState(false);
     const [modalVariant, setModalVariant] = useState("");
-    const [winner, setWinner] = useState("")
+    const [winner, setWinner] = useState("");
+    const [p1Wins, setP1Wins] = useState(0);
+    const [p2Wins, setP2Wins] = useState(0);
 
+    useEffect(() => {
+        winner != "" 
+        ? [ winner === "player1" ? setP1Wins(+1) : setP2Wins(+1)]
+        : null;
+    }, [winner]);
 
     // 00 01 02
     // 10 11 12
@@ -51,8 +60,6 @@ const Game = () => {
             childrens[visibleIndex].className = "visible";
             childrens[2].remove();
             childrens[2].remove();
-
-        
 
             let diagonal1 = [boardValues[0][0],boardValues[1][1],boardValues[2][2]];
             let diagonal2 = [boardValues[0][2],boardValues[1][1],boardValues[2][0]];
@@ -121,56 +128,32 @@ const Game = () => {
 
                     <p>TURN</p>
                 </div>
-                    { <Button variant="restart" onClick={() => {reset(setBoardValues)/*setShowModal(true), setModalVariant("restartGame"), setWinner("")*/}}/> }
+                    { <Button variant="restart" onClick={() => {reset(setBoardValues, setP1Wins, setP2Wins, setWinner)/*setShowModal(true), setModalVariant("restartGame"), setWinner("")*/}}/> }
             </div>  
 
             <div className="game-board">
-                <div className="row">
-                    <Button
-                    onclick={(e) => handleCLick(e,"0","0")}
-                    />
-                    <Button
-                    onclick={(e) => handleCLick(e,"0","1")}
-                    />
-                    <Button
-                    onclick={(e) => handleCLick(e,"0","2")}
-                    />
-                </div>
-                <div className="row">
-                <Button
-                    onclick={(e) => handleCLick(e,"1","0")}
-                    />
-                    <Button
-                    onclick={(e) => handleCLick(e,"1","1")}
-                    />
-                    <Button
-                    onclick={(e) => handleCLick(e,"1","2")}
-                    />
-                </div>
-                <div className="row">
-                <Button
-                    onclick={(e) => handleCLick(e,"2","0")}
-                    />
-                    <Button
-                    onclick={(e) => handleCLick(e,"2","1")}
-                    />
-                    <Button
-                    onclick={(e) => handleCLick(e,"2","2")}
-                    />
-                </div>
+            {
+                boardValues.map((x, xIndex) => x.map((y, yIndex) => 
+                <Button 
+                    key = {[xIndex,yIndex]} 
+                    onclick={(e) => handleCLick(e, xIndex, yIndex)}>
+                </Button> 
+                ))
+            }
             </div>
+
             <div className="game-info row">
                 <div className="player1">
-                    <p className="text">X (YOU)</p>
-                    <p className="value">20</p>
+                    <p className="text">X (P1)</p>
+                    <p className="value">{p1Wins}</p>
                 </div>
                 <div className="ties">
                     <p className="text">TIES</p>
-                    <p className="value">20</p>
+                    <p className="value">0</p>
                 </div>
                 <div className="player2">
-                    <p className="text">O (PC)</p>
-                    <p className="value">20</p>
+                    <p className="text">O (P2)</p>
+                    <p className="value">{p2Wins}</p>
                 </div>
             </div>
 
