@@ -64,10 +64,11 @@ const Button = ( {variant = "gameButton", children, ...props} ) => {
     }  else if (variant === "gameButton") { 
         return(
             <button 
-            value={props.value}
+            // value={props.value}
             onMouseEnter={() => option === "X" ? setHoverX("visible") : setHoverO("visible")}
             onMouseLeave={() => option === "X" ? setHoverX("invisible") : setHoverO("invisible")}
             onClick={props.onclick}
+            {...props.allowHover}
             className={baseClasses.join(" ")}>
                 <img className="invisible" src="./assets/icon-x.svg" alt="icon-x"></img>
                 <img className="invisible" src="./assets/icon-o.svg" alt="icon-o"></img>
