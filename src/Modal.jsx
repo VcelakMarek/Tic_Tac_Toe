@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import CreateModal from "./CreateModal"
 import Button from "./Button"
+import reset from "./reset"
+import nextRound from "./nextRound"
 import { MyContext } from "./MyContext"
 import "./Modal-styles.css"
 
@@ -43,12 +45,13 @@ const Modal = ({variant, ...props}) => {
                 </h1>
                 <div className="buttons">
                     <Button 
-                        link="/game"
+                        link={variant === "restartGame" ? "/game" : "/"}
                         variant="silver" 
                         onclick={props.onclick}>
                         <p>{variant === "restartGame" ? ("NO, CANCEL") : ("QUIT")}</p>
                     </Button>
                     <Button 
+                        link={variant != "restartGame" ? "/game" : "/"}
                         variant="yellow"
                         onclick={props.onclick}>
                         <p>{variant === "restartGame" ? ("YES, RESTART") : ("NEXT ROUND")}</p>
