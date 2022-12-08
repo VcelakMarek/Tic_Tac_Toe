@@ -58,8 +58,10 @@ const Game = () => {
 
             // e.currentTarget.classList.add("x-win")
             childrens[visibleIndex].className = "visible";
-            childrens[2].remove();
-            childrens[2].remove();
+            // childrens[2].remove();
+            // childrens[2].remove();
+            e.currentTarget.disabled = true
+            console.log(e.currentTarget)
 
             let diagonal1 = [boardValues[0][0],boardValues[1][1],boardValues[2][2]];
             let diagonal2 = [boardValues[0][2],boardValues[1][1],boardValues[2][0]];
@@ -111,14 +113,14 @@ const Game = () => {
                 ? [console.log("O WIN"), setShowModal(true), setModalVariant("oWin"), setWinner("player2")] 
                 : console.log("false")];
         }
+        
 
     }
-
 
     return (
         <div className="game">
             <div className="row icon-row">
-                <div>
+                <div className="XO-icons">
                     <img src="./assets/icon-x.svg" alt="icon-x" />
                     <img src="./assets/icon-o.svg" alt="icon-o" />
                 </div>
@@ -132,7 +134,7 @@ const Game = () => {
             </div>  
 
             <div className="game-board">
-            {
+            {  
                 boardValues.map((x, xIndex) => x.map((y, yIndex) => 
                 <Button 
                     key = {[xIndex,yIndex]} 
