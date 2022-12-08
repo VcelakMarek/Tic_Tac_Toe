@@ -65,10 +65,11 @@ const Button = ( {variant = "gameButton", children, ...props} ) => {
         return(
             <button 
             // value={props.value}
+            disabled = {false}
             onMouseEnter={() => option === "X" ? setHoverX("visible") : setHoverO("visible")}
             onMouseLeave={() => option === "X" ? setHoverX("invisible") : setHoverO("invisible")}
-            onClick={props.onclick}
-            {...props.allowHover}
+            onClick={(e) => {props.onclick(e);props.disabled="true" }}
+            // {...props.allowHover}
             className={baseClasses.join(" ")}>
                 <img className="invisible" src="./assets/icon-x.svg" alt="icon-x"></img>
                 <img className="invisible" src="./assets/icon-o.svg" alt="icon-o"></img>
