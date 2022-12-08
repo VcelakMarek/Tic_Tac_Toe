@@ -67,3 +67,16 @@ button img {
     margin-top: 9px;
     cursor: pointer;
 }
+
+@media (min-width: 650px) {
+    .card {
+        width: 460px;
+        height: 205px;
+    }
+    .switch {
+        width: 412px;
+    }
+    .switch-option button {
+        width: 190px;
+    }   
+}
