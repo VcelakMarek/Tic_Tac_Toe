@@ -50,14 +50,30 @@ const Game = () => {
 
       console.log(e.currentTarget);
 
+      if (vsCPU) {
+          let random0 = Math.floor(Math.random() * (0 + 3));
+          let random1 = Math.floor(Math.random() * (0 + 3));
+            console.log("randomNumbers", random0, random1)
+          Math.floor(Math.random() * (0 - 3));
+          while (!boardChange[random0][random1] === "") {
+            random0 = Math.floor(Math.random() * (0 + 3));
+            random1 = Math.floor(Math.random() * (0 + 3));
+          }
+          boardChange[random0][random1] = option;
+          option === "X" ? setOption("O") : setOption("X");
+      }
+      hasSomeoneWon()
+    }
+    function hasSomeoneWon() {
+        
       for (let i = 0; i <= 2; i++) {
-        hasSomeoneWon(boardValues[i]);
+        whoWon(boardValues[i]);
       }
 
       for (let i = 0; i <= 2; i++) {
         let col = boardValues.map((value) => value[i]);
         console.log("col0", col);
-        hasSomeoneWon(col);
+        whoWon(col);
       }
 
       let diagonal1 = [];
@@ -67,10 +83,12 @@ const Game = () => {
         diagonal2.push(boardValues[i][2 - i]);
       }
 
-      hasSomeoneWon(diagonal1);
-      hasSomeoneWon(diagonal2);
-    }
-    function hasSomeoneWon(x) {
+      whoWon(diagonal1);
+      whoWon(diagonal2);
+
+      // boardValues.every("") ? [setShowModal(true), setModalVariant("tied")] : null;
+
+    function whoWon(x) {
       x.toString() === X_WIN.toString()
         ? [
             console.log("X WIN"),
@@ -89,7 +107,7 @@ const Game = () => {
               : console.log("false"),
           ];
     }
-  }
+  }}
 
   return (
     <div className="game">
