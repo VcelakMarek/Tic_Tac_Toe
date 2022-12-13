@@ -27,6 +27,7 @@ const Game = () => {
   const [p1Wins, setP1Wins] = useState(0);
   const [p2Wins, setP2Wins] = useState(0);
   const [ties, setTies] = useState(0);
+  let player1;
 
   useEffect(() => {
     winner != ""
@@ -34,15 +35,17 @@ const Game = () => {
       : null;
   }, [winner]);
 
+  useEffect(() => {
+    player1 = option;
+    console.log("player 1: ", player1);
+    setOption("X");
+  }, []);
+
   // 00 01 02
   // 10 11 12
   // 20 21 22
 
   console.log(boardValues);
-
-  //   const player1 = option;
-  //   console.log("player 1: ", player1);
-  //   setOption("X");
 
   function handleCLick(e, x, y) {
     let boardChange = { ...boardValues };
@@ -172,7 +175,7 @@ const Game = () => {
             <Button
               value={boardValues[xIndex][yIndex]}
               key={[xIndex, yIndex]}
-              onclick={(e) => handleCLick(e, xIndex, yIndex)}
+              onClick={(e) => handleCLick(e, xIndex, yIndex)}
             />
           ))
         )}
@@ -193,25 +196,25 @@ const Game = () => {
         </div>
       </div>
 
-      {/* {vsCPU && (
+      {vsCPU && (
         <>
-        <p className="text">{player1 === "X" ? "X (YOU)" : "X (CPU)"}</p>
-        <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
+          <p className="text">{player1 === "X" ? "X (YOU)" : "X (CPU)"}</p>
+          <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
         </>
       )}
       {!vsCPU && (
         <>
-        <p className="text">{player1 === "X" ? "X (P1)" : "X (P2)"}</p>
-        <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
+          <p className="text">{player1 === "X" ? "X (P1)" : "X (P2)"}</p>
+          <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
         </>
-      )} */}
+      )}
 
       {showModal ? (
         <Modal
           variant={modalVariant}
           onClick={() => setShowModal(false)}
           winner={winner}
-          reset={{ setBoardValues, setP1Wins, setP2Wins, setTies, setWinner }}
+          reset={[setBoardValues, setP1Wins, setP2Wins, setTies, setWinner]}
           nextRound={{ setBoardValues, setWinner }}
         />
       ) : null}
