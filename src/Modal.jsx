@@ -44,20 +44,39 @@ const Modal = ({ variant, ...props }) => {
           <p>{text[variant]}</p>
         </h1>
         <div className="buttons">
-          <Button
-            link={variant === "restartGame" ? "/game" : "/"}
-            variant="silver"
-            onclick={props.onclick}
-          >
-            <p>{variant === "restartGame" ? "NO, CANCEL" : "QUIT"}</p>
-          </Button>
-          <Button
-            link={variant != "restartGame" ? "/game" : "/"}
-            variant="yellow"
-            onclick={props.onclick}
-          >
-            <p>{variant === "restartGame" ? "YES, RESTART" : "NEXT ROUND"}</p>
-          </Button>
+          {variant != "restartGame" && (
+            <>
+              <Button link="/" variant="silver" onclick={props.onclick}>
+                <p>QUIT</p>
+              </Button>
+              <Button
+                link="/game"
+                variant="yellow"
+                onClick={() => {
+                  props.onClick();
+                  nextRound(props.nextRound);
+                }}
+              >
+                <p>NEXT ROUND</p>
+              </Button>
+            </>
+          )}
+          {variant === "restartGame" && (
+            <>
+              <Button variant="silver" onclick={props.onclick}>
+                <p>NO, CANCEL</p>
+              </Button>
+              <Button
+                variant="yellow"
+                // onclick={props.onclick} //restar()
+                onclick={() => {
+                  reset(props.reset);
+                }}
+              >
+                <p>YES, RESTART</p>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </CreateModal>
