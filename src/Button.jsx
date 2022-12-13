@@ -60,7 +60,7 @@ const Button = ({ variant = "gameButton", value, children, ...props }) => {
           option === "X" ? setHoverX("invisible") : setHoverO("invisible")
         }
         onClick={(e) => {
-          props.onclick(e);
+          props.onClick(e);
           setHoverX("invisible");
           setHoverO("invisible");
         }}
@@ -100,7 +100,7 @@ const Button = ({ variant = "gameButton", value, children, ...props }) => {
       <Link to={props.link}>
         <button
           className={baseClasses.join(" ")}
-          onClick={props.onclick}
+          onClick={props.onClick}
           {...props}
         >
           {children}
