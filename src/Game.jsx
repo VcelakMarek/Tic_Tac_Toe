@@ -26,6 +26,7 @@ const Game = () => {
   const [winner, setWinner] = useState("");
   const [p1Wins, setP1Wins] = useState(0);
   const [p2Wins, setP2Wins] = useState(0);
+  const [ties, setTies] = useState(0);
 
   useEffect(() => {
     winner != ""
@@ -39,40 +40,47 @@ const Game = () => {
 
   console.log(boardValues);
 
+  //   const player1 = option;
+  //   console.log("player 1: ", player1);
+  //   setOption("X");
+
   function handleCLick(e, x, y) {
     let boardChange = { ...boardValues };
     if (boardChange[x][y] === "") {
       boardChange[x][y] = option;
       option === "X" ? setOption("O") : setOption("X");
       console.log(boardValues);
-
+      console.log("option after click", option);
       // e.currentTarget.classList.add("x-win")
 
       console.log(e.currentTarget);
 
       if (vsCPU) {
-          let random0 = Math.floor(Math.random() * (0 + 3));
-          let random1 = Math.floor(Math.random() * (0 + 3));
-            console.log("randomNumbers", random0, random1)
-          Math.floor(Math.random() * (0 - 3));
-          while (!boardChange[random0][random1] === "") {
-            random0 = Math.floor(Math.random() * (0 + 3));
-            random1 = Math.floor(Math.random() * (0 + 3));
+        let random0 = Math.floor(Math.random() * (0 + 3));
+        let random1 = Math.floor(Math.random() * (0 + 3));
+
+        while (boardChange[random0][random1] != "") {
+          random0 = Math.floor(Math.random() * (0 + 3));
+          random1 = Math.floor(Math.random() * (0 + 3));
+          if (isTied() === true) {
+            break;
           }
-          boardChange[random0][random1] = option;
-          option === "X" ? setOption("O") : setOption("X");
+        }
+
+        console.log("option before CPU ", option);
+        boardChange[random0][random1] = option;
+        option === "X" ? setOption("O") : setOption("X");
+        console.log("option after CPU", option);
       }
-      hasSomeoneWon()
+      hasSomeoneWon();
     }
     function hasSomeoneWon() {
-        
       for (let i = 0; i <= 2; i++) {
         whoWon(boardValues[i]);
       }
 
       for (let i = 0; i <= 2; i++) {
         let col = boardValues.map((value) => value[i]);
-        console.log("col0", col);
         whoWon(col);
       }
 
@@ -86,28 +94,36 @@ const Game = () => {
       whoWon(diagonal1);
       whoWon(diagonal2);
 
-      // boardValues.every("") ? [setShowModal(true), setModalVariant("tied")] : null;
-
-    function whoWon(x) {
-      x.toString() === X_WIN.toString()
-        ? [
-            console.log("X WIN"),
-            setShowModal(true),
-            setModalVariant("xWin"),
-            setWinner("player1"),
-          ]
-        : [
-            x.toString() === O_WIN.toString()
-              ? [
-                  console.log("O WIN"),
-                  setShowModal(true),
-                  setModalVariant("oWin"),
-                  setWinner("player2"),
-                ]
-              : console.log("false"),
-          ];
+      function whoWon(x) {
+        x.toString() === X_WIN.toString()
+          ? [
+              console.log("X WIN"),
+              setShowModal(true),
+              setModalVariant("xWin"),
+              setWinner("player1"),
+            ]
+          : [
+              x.toString() === O_WIN.toString()
+                ? [
+                    console.log("O WIN"),
+                    setShowModal(true),
+                    setModalVariant("oWin"),
+                    setWinner("player2"),
+                  ]
+                : isTied(),
+            ];
+      }
     }
-  }}
+    function isTied() {
+      if (!boardValues.some((value) => value.includes(""))) {
+        console.log("TIED");
+        setTies(+1);
+        setShowModal(true);
+        setModalVariant("tied");
+        return true;
+      }
+    }
+  }
 
   return (
     <div className="game">
@@ -134,12 +150,17 @@ const Game = () => {
           <Button
             variant="restart"
             onClick={() => {
-              reset(
-                setBoardValues,
-                setP1Wins,
-                setP2Wins,
-                setWinner
-              ); /*setShowModal(true), setModalVariant("restartGame"), setWinner("")*/
+              //   reset(
+              //     setBoardValues,
+              //     setP1Wins,
+              //     setP2Wins,
+              //     setTies,
+              //     setWinner
+              //   );
+              setShowModal(true),
+                setModalVariant("restartGame"),
+                setWinner(""),
+                setTies(0);
             }}
           />
         }
@@ -164,7 +185,7 @@ const Game = () => {
         </div>
         <div className="ties">
           <p className="text">TIES</p>
-          <p className="value">0</p>
+          <p className="value">{ties}</p>
         </div>
         <div className="player2">
           <p className="text">O (P2)</p>
@@ -172,11 +193,26 @@ const Game = () => {
         </div>
       </div>
 
+      {/* {vsCPU && (
+        <>
+        <p className="text">{player1 === "X" ? "X (YOU)" : "X (CPU)"}</p>
+        <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
+        </>
+      )}
+      {!vsCPU && (
+        <>
+        <p className="text">{player1 === "X" ? "X (P1)" : "X (P2)"}</p>
+        <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
+        </>
+      )} */}
+
       {showModal ? (
         <Modal
           variant={modalVariant}
-          onclick={() => setShowModal(false)}
+          onClick={() => setShowModal(false)}
           winner={winner}
+          reset={{ setBoardValues, setP1Wins, setP2Wins, setTies, setWinner }}
+          nextRound={{ setBoardValues, setWinner }}
         />
       ) : null}
     </div>
