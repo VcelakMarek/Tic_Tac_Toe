@@ -1,8 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { OptionContext } from "./Option.context";
-import { MyContext } from "./MyContext";
-
 import "./styles.css";
 import "./button-styles.css";
 
@@ -43,7 +41,7 @@ const Button = ({ variant = "gameButton", value, children, ...props }) => {
   const [hoverX, setHoverX] = useState("invisible");
   const [hoverO, setHoverO] = useState("invisible");
   // const [displayX] = useContext(MyContext);
-  console.log(value);
+
   let baseClasses = [color[variant], size[variant], border[variant]];
 
   if (variant === "restart") {
@@ -100,7 +98,11 @@ const Button = ({ variant = "gameButton", value, children, ...props }) => {
   } else {
     return (
       <Link to={props.link}>
-        <button className={baseClasses.join(" ")} onClick={props.onclick}>
+        <button
+          className={baseClasses.join(" ")}
+          onClick={props.onclick}
+          {...props}
+        >
           {children}
         </button>
       </Link>
