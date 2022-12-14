@@ -3,8 +3,8 @@ import { OptionContext } from "./Option.context";
 import { vsCpuContext } from "./vsCpu.context";
 import Button from "./Button";
 import Modal from "./Modal";
-import "./styles.css";
-import "./Game-styles.css";
+import "./css/styles.css";
+import "./css/Game-styles.css";
 import reset from "./reset";
 import hasSomeoneWon from "./hasSomeoneWon";
 import gameVsCPU from "./gameVsCPU";
@@ -27,7 +27,7 @@ const Game = () => {
   const [p2Wins, setP2Wins] = useState(0);
   const [ties, setTies] = useState(0);
   const [player1, setPLayer1] = useState(0);
-  let changeOption = false;
+  const [playerMark, setPlayerMark] = useState();
 
   useEffect(() => {
     winner != ""
@@ -37,14 +37,10 @@ const Game = () => {
 
   useEffect(() => {
     setPLayer1(option);
+    setPlayerMark(option);
     console.log("player 1: ", player1);
     setOption("X");
   }, []);
-
-  useEffect(() => {
-    option === "X" ? setOption("O") : setOption("X");
-    changeOption = false;
-  }, [changeOption === true]);
 
   // 00 01 02
   // 10 11 12
@@ -55,9 +51,15 @@ const Game = () => {
   function handleCLick(e, x, y) {
     let boardChange = { ...boardValues };
     if (boardChange[x][y] === "") {
-      boardChange[x][y] = option;
-      !vsCPU ? (changeOption = true) : null;
-      // option === "X" ? setOption("O") : setOption("X");
+      boardChange[x][y] = vsCPU ? playerMark : option;
+
+      console.log(
+        vsCPU ? "playerMark" : "option",
+        "ionion",
+        vsCPU ? playerMark : option
+      );
+
+      option === "X" ? setOption("O") : setOption("X");
 
       //   !vsCPU ? changeOption() : null;
       //   console.log(boardValues);
@@ -66,7 +68,7 @@ const Game = () => {
 
       console.log(e.currentTarget);
       if (vsCPU) {
-        gameVsCPU(boardChange, option);
+        gameVsCPU(boardChange, playerMark);
       }
 
       hasSomeoneWon(
