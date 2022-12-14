@@ -1,14 +1,12 @@
 import { useContext, useState, useEffect } from "react";
-import { OptionContext } from "./Option.context";
+import OptionProvider, { OptionContext } from "./Option.context";
 import { vsCpuContext } from "./vsCpu.context";
 import Button from "./Button";
 import Modal from "./Modal";
 import "./styles.css";
 import "./Game-styles.css";
 import reset from "./reset";
-
-const X_WIN = ["X", "X", "X"];
-const O_WIN = ["O", "O", "O"];
+import hasSomeoneWon from "./hasSomeoneWon";
 
 const Game = () => {
   const [option, setOption] = useContext(OptionContext);
@@ -27,7 +25,7 @@ const Game = () => {
   const [p1Wins, setP1Wins] = useState(0);
   const [p2Wins, setP2Wins] = useState(0);
   const [ties, setTies] = useState(0);
-  let player1;
+  const [player1, setPLayer1] = useState(0);
 
   useEffect(() => {
     winner != ""
@@ -36,7 +34,7 @@ const Game = () => {
   }, [winner]);
 
   useEffect(() => {
-    player1 = option;
+    setPLayer1(option);
     console.log("player 1: ", player1);
     setOption("X");
   }, []);
@@ -46,18 +44,18 @@ const Game = () => {
   // 20 21 22
 
   console.log(boardValues);
-
+  //   let optionForCPU = option;
   function handleCLick(e, x, y) {
     let boardChange = { ...boardValues };
     if (boardChange[x][y] === "") {
       boardChange[x][y] = option;
-      option === "X" ? setOption("O") : setOption("X");
-      console.log(boardValues);
-      console.log("option after click", option);
+
+      //   !vsCPU ? changeOption() : null;
+      //   console.log(boardValues);
+      //   console.log("option after click", option);
       // e.currentTarget.classList.add("x-win")
 
       console.log(e.currentTarget);
-
       if (vsCPU) {
         let random0 = Math.floor(Math.random() * (0 + 3));
         let random1 = Math.floor(Math.random() * (0 + 3));
@@ -69,53 +67,18 @@ const Game = () => {
             break;
           }
         }
-
-        console.log("option before CPU ", option);
-        boardChange[random0][random1] = option;
-        option === "X" ? setOption("O") : setOption("X");
-        console.log("option after CPU", option);
-      }
-      hasSomeoneWon();
-    }
-    function hasSomeoneWon() {
-      for (let i = 0; i <= 2; i++) {
-        whoWon(boardValues[i]);
+        boardChange[random0][random1] = option === "X" ? "O" : "X";
+        // option === "X" ? setOption("X") : setOption("O");
       }
 
-      for (let i = 0; i <= 2; i++) {
-        let col = boardValues.map((value) => value[i]);
-        whoWon(col);
-      }
-
-      let diagonal1 = [];
-      let diagonal2 = [];
-      for (let i = 0; i < 3; i++) {
-        diagonal1.push(boardValues[i][i]);
-        diagonal2.push(boardValues[i][2 - i]);
-      }
-
-      whoWon(diagonal1);
-      whoWon(diagonal2);
-
-      function whoWon(x) {
-        x.toString() === X_WIN.toString()
-          ? [
-              console.log("X WIN"),
-              setShowModal(true),
-              setModalVariant("xWin"),
-              setWinner("player1"),
-            ]
-          : [
-              x.toString() === O_WIN.toString()
-                ? [
-                    console.log("O WIN"),
-                    setShowModal(true),
-                    setModalVariant("oWin"),
-                    setWinner("player2"),
-                  ]
-                : isTied(),
-            ];
-      }
+      hasSomeoneWon(
+        boardValues,
+        setShowModal,
+        setModalVariant,
+        setWinner,
+        player1,
+        setTies
+      );
     }
     function isTied() {
       if (!boardValues.some((value) => value.includes(""))) {
@@ -126,6 +89,9 @@ const Game = () => {
         return true;
       }
     }
+    // function changeOption() {
+    //   option === "X" ? setOption("O") : setOption("X");
+    // }
   }
 
   return (
@@ -183,31 +149,42 @@ const Game = () => {
 
       <div className="game-info row">
         <div className="player1">
-          <p className="text">X (P1)</p>
-          <p className="value">{p1Wins}</p>
+          {vsCPU && (
+            <>
+              <p className="text">{player1 === "X" ? "X (YOU)" : "X (CPU)"}</p>
+              <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
+            </>
+          )}
+          {!vsCPU && (
+            <>
+              <p className="text">{player1 === "X" ? "X (P1)" : "X (P2)"}</p>
+              <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
+            </>
+          )}
+          {/* <p className="text">X (P1)</p>
+          <p className="value">{p1Wins}</p> */}
         </div>
         <div className="ties">
           <p className="text">TIES</p>
           <p className="value">{ties}</p>
         </div>
         <div className="player2">
-          <p className="text">O (P2)</p>
-          <p className="value">{p2Wins}</p>
+          {vsCPU && (
+            <>
+              <p className="text">{player1 === "X" ? "O (CPU)" : "O (YOU)"}</p>
+              <p className="value">{player1 === "X" ? p2Wins : p1Wins}</p>
+            </>
+          )}
+          {!vsCPU && (
+            <>
+              <p className="text">{player1 === "X" ? "O (P2)" : "O (P1)"}</p>
+              <p className="value">{player1 === "X" ? p2Wins : p1Wins}</p>
+            </>
+          )}
+          {/* <p className="text">O (P2)</p>
+          <p className="value">{p2Wins}</p> */}
         </div>
       </div>
-
-      {vsCPU && (
-        <>
-          <p className="text">{player1 === "X" ? "X (YOU)" : "X (CPU)"}</p>
-          <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
-        </>
-      )}
-      {!vsCPU && (
-        <>
-          <p className="text">{player1 === "X" ? "X (P1)" : "X (P2)"}</p>
-          <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
-        </>
-      )}
 
       {showModal ? (
         <Modal
