@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import OptionProvider, { OptionContext } from "./Option.context";
+import { OptionContext } from "./Option.context";
 import { vsCpuContext } from "./vsCpu.context";
 import Button from "./Button";
 import Modal from "./Modal";
@@ -7,6 +7,7 @@ import "./styles.css";
 import "./Game-styles.css";
 import reset from "./reset";
 import hasSomeoneWon from "./hasSomeoneWon";
+import gameVsCPU from "./gameVsCPU";
 
 const Game = () => {
   const [option, setOption] = useContext(OptionContext);
@@ -26,6 +27,7 @@ const Game = () => {
   const [p2Wins, setP2Wins] = useState(0);
   const [ties, setTies] = useState(0);
   const [player1, setPLayer1] = useState(0);
+  let changeOption = false;
 
   useEffect(() => {
     winner != ""
@@ -39,6 +41,11 @@ const Game = () => {
     setOption("X");
   }, []);
 
+  useEffect(() => {
+    option === "X" ? setOption("O") : setOption("X");
+    changeOption = false;
+  }, [changeOption === true]);
+
   // 00 01 02
   // 10 11 12
   // 20 21 22
@@ -49,6 +56,8 @@ const Game = () => {
     let boardChange = { ...boardValues };
     if (boardChange[x][y] === "") {
       boardChange[x][y] = option;
+      !vsCPU ? (changeOption = true) : null;
+      // option === "X" ? setOption("O") : setOption("X");
 
       //   !vsCPU ? changeOption() : null;
       //   console.log(boardValues);
@@ -57,18 +66,7 @@ const Game = () => {
 
       console.log(e.currentTarget);
       if (vsCPU) {
-        let random0 = Math.floor(Math.random() * (0 + 3));
-        let random1 = Math.floor(Math.random() * (0 + 3));
-
-        while (boardChange[random0][random1] != "") {
-          random0 = Math.floor(Math.random() * (0 + 3));
-          random1 = Math.floor(Math.random() * (0 + 3));
-          if (isTied() === true) {
-            break;
-          }
-        }
-        boardChange[random0][random1] = option === "X" ? "O" : "X";
-        // option === "X" ? setOption("X") : setOption("O");
+        gameVsCPU(boardChange, option);
       }
 
       hasSomeoneWon(
