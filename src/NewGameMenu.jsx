@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import "./NewGameMenu-styles.css";
+import "./css/NewGameMenu-styles.css";
 import ChooseSymbol from "./ChooseSymbol";
 import Button from "./Button";
 import { vsCpuContext } from "./vsCpu.context";

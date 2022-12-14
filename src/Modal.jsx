@@ -4,7 +4,7 @@ import Button from "./Button";
 import reset from "./reset";
 import nextRound from "./nextRound";
 import { MyContext } from "./MyContext";
-import "./Modal-styles.css";
+import "./css/Modal-styles.css";
 
 const text = {
   xWin: "TAKES THE ROUND",

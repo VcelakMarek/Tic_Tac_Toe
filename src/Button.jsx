@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { OptionContext } from "./Option.context";
-import "./styles.css";
-import "./button-styles.css";
+import "./css/styles.css";
+import "./css/button-styles.css";
 
 const color = {
   newGameCPU: "yellow",

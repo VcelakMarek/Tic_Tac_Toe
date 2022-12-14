@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { OptionContext } from "./Option.context";
-import "./styles.css";
-import "./ChooseSymbol-styles.css";
+import "./css/styles.css";
+import "./css/ChooseSymbol-styles.css";
 
 const ChooseSymbol = () => {
   const [option, setOption] = useContext(OptionContext);
