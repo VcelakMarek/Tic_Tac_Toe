@@ -1,0 +1,174 @@
+.small {
+    width: 40px;
+    height: 40px;
+}
+
+.normal {
+    width: 146px;
+    height: 52px;
+}
+
+.long {
+    width: 327px;
+    height: 56px;
+}
+
+.small img {
+    width: 15px;
+    height: 15px;
+}
+
+.game-button-size {
+    height: 96px;
+    width: 96px;
+    position: relative;
+}
+
+.height-52px {
+    height: 52px;
+}
+
+.height-52px p {
+    margin-bottom: 12px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.dark-navy {
+    background: var(--semi-dark-navy);
+    box-shadow: inset 0px -8px 0px var(--dark-navy-shadow);
+}
+
+.yellow {
+    background: var(--light-yellow);
+    box-shadow: inset 0px -8px 0px var(--light-yellow-shadow);
+    color: var(--dark-navy);
+}
+
+.box-shadow-4px {
+    box-shadow: inset 0px -4px 0px var(--light-yellow-shadow);
+}
+
+.yellow:active {
+    background-color: var(--light-yellow-active);
+}
+
+.blue {
+    background: var(--light-blue);
+    box-shadow: inset 0px -8px 0px var(--light-blue-shadow);
+    color: var(--dark-navy);
+}
+
+.blue:active {
+    background-color: var(--light-blue-active);
+}
+
+.silver {
+    background-color: var(--silver);
+    box-shadow: inset 0px -4px 0px var(--silver-shadow);
+    color: var(--dark-navy);
+}
+
+.silver:active {
+    background-color: var(--silver-active);
+}
+
+.border-radius-15px {
+    border-radius: 15px;
+    border: none;
+}
+
+.border-radius-10px {
+    border-radius: 10px;
+    border: none;
+}
+
+.border-radius-5px {
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button p {
+    box-sizing: border-box;
+    margin-top: 10px;
+    vertical-align: center;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+}
+
+.game-button-size img {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 20px;
+    left: 28px;
+}
+
+.invisible {
+    display:  none;
+}
+
+.visible {
+    display: block;
+}
+
+.x-win {
+    background-color: var(--light-blue);
+    box-shadow: inset 0px -8px 0px var(--light-blue-shadow);
+}
+
+.x-win img {
+    filter: brightness(0) saturate(100%) invert(15%) sepia(7%) saturate(3895%) hue-rotate(155deg) brightness(90%) contrast(84%);
+}
+
+.o-win {
+    background-color: var(--light-yellow);
+    box-shadow: inset 0px -8px 0px var(--light-yellow-shadow);
+}
+
+.o-win img {
+    filter: brightness(0) saturate(100%) invert(15%) sepia(7%) saturate(3895%) hue-rotate(155deg) brightness(90%) contrast(84%);
+}
+
+@media (min-width: 650px) {
+    .small {
+        width: 48px;
+        height: 48px;
+    }
+
+    .small img {
+        width: 18px;
+        height: 18px;
+        margin-top: 0;
+    }
+
+    .long {
+        width: 460px;
+        height: 67px;
+    }
+
+    button p {
+        font-size: 18px;
+    }
+
+    .game-button-size {
+        height: 120px;
+        width: 102px;  
+    }
+    .game-button-size img {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top: 22px;
+        left: 33px;
+    }
+    
+}

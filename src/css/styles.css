@@ -1,0 +1,31 @@
+:root {
+    --light-blue: #31C3BD;
+    --light-blue-active: #65E9E4;
+    --light-blue-shadow: #118C87;
+    --light-yellow: #F2B137;
+    --light-yellow-active: #FFC860;
+    --light-yellow-shadow: #CC8B13;
+    --dark-navy: #1A2A33;
+    --semi-dark-navy: #1F3641;
+    --dark-navy-shadow:#10212A;
+    --silver: #A8BFC9;
+    --silver-active: #DBE8ED;
+    --silver-shadow: #6B8997;
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.875px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* background-color: var(--dark-navy-shadow); */
+}
