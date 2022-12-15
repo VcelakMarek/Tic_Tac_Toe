@@ -1,5 +1,5 @@
-function gameVsCPU(boardChange, option) {
-  console.log("option:", option);
+function gameVsCPU(boardChange, playerMark) {
+  console.log("option:", playerMark);
   let random0 = Math.floor(Math.random() * (0 + 3));
   let random1 = Math.floor(Math.random() * (0 + 3));
 
@@ -10,7 +10,7 @@ function gameVsCPU(boardChange, option) {
     //   break;
     // }
   }
-  boardChange[random0][random1] = option === "X" ? "O" : "X";
+  boardChange[random0][random1] = playerMark === "X" ? "O" : "X";
 }
 
 export default gameVsCPU;
