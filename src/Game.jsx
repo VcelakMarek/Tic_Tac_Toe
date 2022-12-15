@@ -59,8 +59,6 @@ const Game = () => {
         vsCPU ? playerMark : option
       );
 
-      option === "X" ? setOption("O") : setOption("X");
-
       //   !vsCPU ? changeOption() : null;
       //   console.log(boardValues);
       //   console.log("option after click", option);
@@ -79,6 +77,7 @@ const Game = () => {
         player1,
         setTies
       );
+      option === "X" ? setOption("O") : setOption("X");
     }
     function isTied() {
       if (!boardValues.some((value) => value.includes(""))) {
