@@ -6,7 +6,7 @@ import Button from "./Button";
 import { vsCpuContext } from "./vsCpu.context";
 
 const NewGameMenu = () => {
-  const [vsCPU, setVsCPU] = useContext(vsCpuContext);
+  const [, setVsCPU] = useContext(vsCpuContext);
   return (
     <div>
       <div className="XO-header">
