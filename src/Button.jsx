@@ -54,11 +54,18 @@ const Button = ({ variant = "gameButton", value, children, ...props }) => {
     return (
       <button
         onMouseEnter={() =>
-          option === "X" ? setHoverX("visible") : setHoverO("visible")
+          !props.vsCPU
+            ? [option === "X" ? setHoverX("visible") : setHoverO("visible")]
+            : [
+                props.playerMark === "X"
+                  ? setHoverX("visible")
+                  : setHoverO("visible"),
+              ]
         }
-        onMouseLeave={() =>
-          option === "X" ? setHoverX("invisible") : setHoverO("invisible")
-        }
+        onMouseLeave={() => {
+          setHoverX("invisible");
+          setHoverO("invisible");
+        }}
         onClick={(e) => {
           props.onClick(e);
           setHoverX("invisible");
