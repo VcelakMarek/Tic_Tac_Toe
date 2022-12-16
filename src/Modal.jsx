@@ -34,7 +34,15 @@ const winInfo = {
   player2: "PLAYER 2 WINS!",
 };
 
-const Modal = ({ variant, reset, ...props }) => {
+const Modal = ({
+  variant,
+  setBoardValues,
+  setP1Wins,
+  setP2Wins,
+  setTies,
+  setWinner,
+  ...props
+}) => {
   return (
     <CreateModal>
       <div className={color[variant]}>
@@ -70,8 +78,14 @@ const Modal = ({ variant, reset, ...props }) => {
                 variant="yellow"
                 // onclick={props.onclick} //restar()
                 onClick={() => {
-                  // reset(props.reset);
-                  console.log(reset);
+                  reset(
+                    setBoardValues,
+                    setP1Wins,
+                    setP2Wins,
+                    setTies,
+                    setWinner
+                  );
+                  props.onClick();
                 }}
               >
                 <p>YES, RESTART</p>
