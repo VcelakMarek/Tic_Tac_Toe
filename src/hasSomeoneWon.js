@@ -47,14 +47,14 @@ function hasSomeoneWon(
             : isTied(boardValues, setTies, setShowModal, setModalVariant),
         ];
   }
-}
-function isTied(boardValues, setTies, setShowModal, setModalVariant) {
-  if (!boardValues.some((value) => value.includes(""))) {
-    console.log("TIED");
-    setTies(+1);
-    setShowModal(true);
-    setModalVariant("tied");
-    return true;
+  function isTied(boardValues, setTies, setShowModal, setModalVariant) {
+    if (!boardValues.some((value) => value.includes(""))) {
+      console.log("TIED");
+      setTies(+1);
+      setShowModal(true);
+      setModalVariant("tied");
+      return true;
+    }
   }
 }
 
