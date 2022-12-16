@@ -28,6 +28,7 @@ const Game = () => {
   const [ties, setTies] = useState(0);
   const [player1, setPLayer1] = useState(0);
   const [playerMark, setPlayerMark] = useState();
+  const boardChange = { ...boardValues };
 
   useEffect(() => {
     winner != ""
@@ -41,6 +42,14 @@ const Game = () => {
     console.log("player 1: ", player1);
     setOption("X");
   }, []);
+  useEffect(() => {
+    console.log("useeffect player mark", playerMark);
+    playerMark === "O" ? gameVsCPU(boardChange, playerMark) : null;
+  }, [playerMark]);
+
+  // useEffect(() => {
+  //   option === "X" ? setOption("O") : setOption("X");
+  // }, [handleCLick()]);
 
   // 00 01 02
   // 10 11 12
@@ -49,15 +58,8 @@ const Game = () => {
   console.log(boardValues);
   //   let optionForCPU = option;
   function handleCLick(e, x, y) {
-    let boardChange = { ...boardValues };
     if (boardChange[x][y] === "") {
       boardChange[x][y] = vsCPU ? playerMark : option;
-
-      console.log(
-        vsCPU ? "playerMark" : "option",
-        "ionion",
-        vsCPU ? playerMark : option
-      );
 
       //   !vsCPU ? changeOption() : null;
       //   console.log(boardValues);
@@ -88,9 +90,6 @@ const Game = () => {
         return true;
       }
     }
-    // function changeOption() {
-    //   option === "X" ? setOption("O") : setOption("X");
-    // }
   }
 
   return (
@@ -141,6 +140,8 @@ const Game = () => {
               value={boardValues[xIndex][yIndex]}
               key={[xIndex, yIndex]}
               onClick={(e) => handleCLick(e, xIndex, yIndex)}
+              vsCPU={vsCPU}
+              playerMark={playerMark}
             />
           ))
         )}
@@ -190,7 +191,7 @@ const Game = () => {
           variant={modalVariant}
           onClick={() => setShowModal(false)}
           winner={winner}
-          reset={[setBoardValues, setP1Wins, setP2Wins, setTies, setWinner]}
+          reset={{ setBoardValues, setP1Wins, setP2Wins, setTies, setWinner }}
           nextRound={{ setBoardValues, setWinner }}
         />
       ) : null}
