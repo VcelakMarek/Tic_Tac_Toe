@@ -42,10 +42,14 @@ const Game = () => {
     console.log("player 1: ", player1);
     setOption("X");
   }, []);
+
   useEffect(() => {
     console.log("useeffect player mark", playerMark);
-    playerMark === "O" ? gameVsCPU(boardChange, playerMark) : null;
-  }, [playerMark]);
+    if (playerMark === "O") {
+      gameVsCPU(boardChange, playerMark);
+      console.log("tyDebile");
+    }
+  }, [boardChange, playerMark]);
 
   // useEffect(() => {
   //   option === "X" ? setOption("O") : setOption("X");
@@ -68,7 +72,7 @@ const Game = () => {
 
       console.log(e.currentTarget);
       if (vsCPU) {
-        gameVsCPU(boardChange, playerMark);
+        gameVsCPU(boardChange, playerMark, boardValues);
       }
 
       hasSomeoneWon(
@@ -191,7 +195,18 @@ const Game = () => {
           variant={modalVariant}
           onClick={() => setShowModal(false)}
           winner={winner}
-          reset={{ setBoardValues, setP1Wins, setP2Wins, setTies, setWinner }}
+          setBoardValues={setBoardValues}
+          setP1Wins={setP1Wins}
+          setP2Wins={setP2Wins}
+          setTies={setTies}
+          setWinner={setWinner}
+          // resetprops={{
+          //   setBoardValues,
+          //   setP1Wins,
+          //   setP2Wins,
+          //   setTies,
+          //   setWinner,
+          // }}
           nextRound={{ setBoardValues, setWinner }}
         />
       ) : null}
