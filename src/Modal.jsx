@@ -70,7 +70,8 @@ const Modal = ({ variant, reset, ...props }) => {
                 variant="yellow"
                 // onclick={props.onclick} //restar()
                 onClick={() => {
-                  reset(...reset);
+                  // reset(props.reset);
+                  console.log(reset);
                 }}
               >
                 <p>YES, RESTART</p>
