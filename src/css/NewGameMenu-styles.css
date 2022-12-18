@@ -1,16 +1,15 @@
 body {
-    background-color: var(--dark-navy);
+  background-color: var(--dark-navy);
 }
 
 .XO-header {
-    text-align: center;
-    margin-bottom: 32px;
-    margin-top: 80px;
+  text-align: center;
+  margin-bottom: 32px;
 }
 
 .new-game-buttons {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 16px;
-    margin: 16px auto;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
+  margin: 16px auto;
 }
