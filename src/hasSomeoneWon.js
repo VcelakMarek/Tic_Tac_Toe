@@ -53,7 +53,6 @@ function hasSomeoneWon(
       setTies(+1);
       setShowModal(true);
       setModalVariant("tied");
-      return true;
     }
   }
 }
