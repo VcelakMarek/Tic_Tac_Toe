@@ -40,7 +40,6 @@ const Button = ({ variant = "gameButton", value, children, ...props }) => {
   const [option] = useContext(OptionContext);
   const [hoverX, setHoverX] = useState("invisible");
   const [hoverO, setHoverO] = useState("invisible");
-  // const [displayX] = useContext(MyContext);
 
   let baseClasses = [color[variant], size[variant], border[variant]];
 
