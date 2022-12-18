@@ -3,11 +3,10 @@ import { OptionContext } from "./Option.context";
 import { vsCpuContext } from "./vsCpu.context";
 import Button from "./Button";
 import Modal from "./Modal";
-import "./css/styles.css";
-import "./css/Game-styles.css";
-import reset from "./reset";
 import hasSomeoneWon from "./hasSomeoneWon";
 import gameVsCPU from "./gameVsCPU";
+import "./css/styles.css";
+import "./css/Game-styles.css";
 
 const Game = () => {
   const [option, setOption] = useContext(OptionContext);
@@ -60,15 +59,9 @@ const Game = () => {
   // 20 21 22
 
   console.log(boardValues);
-  //   let optionForCPU = option;
   function handleCLick(e, x, y) {
     if (boardChange[x][y] === "") {
       boardChange[x][y] = vsCPU ? playerMark : option;
-
-      //   !vsCPU ? changeOption() : null;
-      //   console.log(boardValues);
-      //   console.log("option after click", option);
-      // e.currentTarget.classList.add("x-win")
 
       console.log(e.currentTarget);
       if (vsCPU) {
@@ -105,20 +98,12 @@ const Game = () => {
             src="./assets/icon-o-silver.svg"
             alt="icon-x"
           />
-
           <p>TURN</p>
         </div>
         {
           <Button
             variant="restart"
             onClick={() => {
-              //   reset(
-              //     setBoardValues,
-              //     setP1Wins,
-              //     setP2Wins,
-              //     setTies,
-              //     setWinner
-              //   );
               setShowModal(true),
                 setModalVariant("restartGame"),
                 setWinner(""),
@@ -156,8 +141,6 @@ const Game = () => {
               <p className="value">{player1 === "X" ? p1Wins : p2Wins}</p>
             </>
           )}
-          {/* <p className="text">X (P1)</p>
-          <p className="value">{p1Wins}</p> */}
         </div>
         <div className="ties">
           <p className="text">TIES</p>
@@ -176,8 +159,6 @@ const Game = () => {
               <p className="value">{player1 === "X" ? p2Wins : p1Wins}</p>
             </>
           )}
-          {/* <p className="text">O (P2)</p>
-          <p className="value">{p2Wins}</p> */}
         </div>
       </div>
 
