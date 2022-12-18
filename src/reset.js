@@ -1,8 +1,4 @@
 function reset(setBoardValues, setP1Wins, setP2Wins, setTies, setWinner) {
-  // const images = Array.from(
-  //   document.querySelectorAll(".game-board button img")
-  // );
-
   setBoardValues([
     ["", "", ""],
     ["", "", ""],
