@@ -43,13 +43,13 @@ const Game = () => {
     setOption("X");
   }, []);
 
-  useEffect(() => {
-    console.log("useeffect player mark", playerMark);
-    if (playerMark === "O") {
-      gameVsCPU(boardChange, playerMark);
-      console.log("tyDebile");
-    }
-  }, [boardChange, playerMark]);
+  // useEffect(() => {
+  //   console.log("useeffect player mark", playerMark);
+  //   if (playerMark === "O") {
+  //     gameVsCPU(boardChange, playerMark, boardValues);
+  //     console.log("tyDebile");
+  //   }
+  // }, [boardChange, playerMark]);
 
   // useEffect(() => {
   //   option === "X" ? setOption("O") : setOption("X");
@@ -84,15 +84,6 @@ const Game = () => {
         setTies
       );
       option === "X" ? setOption("O") : setOption("X");
-    }
-    function isTied() {
-      if (!boardValues.some((value) => value.includes(""))) {
-        console.log("TIED");
-        setTies(+1);
-        setShowModal(true);
-        setModalVariant("tied");
-        return true;
-      }
     }
   }
 
@@ -200,14 +191,6 @@ const Game = () => {
           setP2Wins={setP2Wins}
           setTies={setTies}
           setWinner={setWinner}
-          // resetprops={{
-          //   setBoardValues,
-          //   setP1Wins,
-          //   setP2Wins,
-          //   setTies,
-          //   setWinner,
-          // }}
-          nextRound={{ setBoardValues, setWinner }}
         />
       ) : null}
     </div>
