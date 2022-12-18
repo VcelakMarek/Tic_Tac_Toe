@@ -71,7 +71,6 @@ const Modal = ({
                 </Button>
                 <Button
                   variant="yellow"
-                  // onclick={props.onclick} //restar()
                   onClick={() => {
                     reset(
                       setBoardValues,
