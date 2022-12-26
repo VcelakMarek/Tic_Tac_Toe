@@ -42,17 +42,14 @@ const Game = () => {
     setOption("X");
   }, []);
 
-  // useEffect(() => {
-  //   console.log("useeffect player mark", playerMark);
-  //   if (playerMark === "O") {
-  //     gameVsCPU(boardChange, playerMark, boardValues);
-  //     console.log("tyDebile");
-  //   }
-  // }, [boardChange, playerMark]);
-
-  // useEffect(() => {
-  //   option === "X" ? setOption("O") : setOption("X");
-  // }, [handleCLick()]);
+  if (
+    !boardValues.some((value) => value.includes("X")) &&
+    !boardValues.some((value) => value.includes("O")) &&
+    vsCPU &&
+    playerMark === "O"
+  ) {
+    gameVsCPU(boardChange, playerMark, boardValues);
+  }
 
   // 00 01 02
   // 10 11 12
