@@ -81,18 +81,18 @@ const Game = () => {
     <div className="game">
       <div className="row icon-row">
         <div className="XO-icons">
-          <img src="./assets/icon-x.svg" alt="icon-x" />
-          <img src="./assets/icon-o.svg" alt="icon-o" />
+          <img src="./icon-x.svg" alt="icon-x" />
+          <img src="./icon-o.svg" alt="icon-o" />
         </div>
         <div className="turn">
           <img
             className={option === "X" ? "visible" : "invisible"}
-            src="./assets/icon-x-silver.svg"
+            src="./icon-x-silver.svg"
             alt="icon-x"
           />
           <img
             className={option === "O" ? "visible" : "invisible"}
-            src="./assets/icon-o-silver.svg"
+            src="./icon-o-silver.svg"
             alt="icon-x"
           />
           <p>TURN</p>

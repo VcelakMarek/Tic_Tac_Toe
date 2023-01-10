@@ -46,7 +46,7 @@ const Button = ({ variant = "gameButton", value, children, ...props }) => {
   if (variant === "restart") {
     return (
       <button className={baseClasses.join(" ")} onClick={props.onClick}>
-        <img src="./assets/icon-restart.svg" alt="restart-icon" />
+        <img src="/icon-restart.svg" alt="restart-icon" />
       </button>
     );
   } else if (variant === "gameButton") {
@@ -73,23 +73,23 @@ const Button = ({ variant = "gameButton", value, children, ...props }) => {
         className={baseClasses.join(" ")}
       >
         {value === "X" && (
-          <img className="visible" src="./assets/icon-x.svg" alt="icon-x" />
+          <img className="visible" src="/icon-x.svg" alt="icon-x" />
         )}
         {value === "O" && (
-          <img className="visible" src="./assets/icon-o.svg" alt="icon-o" />
+          <img className="visible" src="/icon-o.svg" alt="icon-o" />
         )}
 
         {value === "" && hoverX === "visible" && (
           <img
             className="visible"
-            src="./assets/icon-x-outline.svg"
+            src="/icon-x-outline.svg"
             alt="icon-x-hover"
           />
         )}
         {value === "" && hoverO === "visible" && (
           <img
             className="visible"
-            src="./assets/icon-o-outline.svg"
+            src="/icon-o-outline.svg"
             alt="icon-o-hover"
           />
         )}

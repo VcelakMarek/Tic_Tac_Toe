@@ -15,7 +15,7 @@ const ChooseSymbol = () => {
             className={option === "X" ? "active" : "inactive"}
             onClick={() => setOption("X")}
           >
-            <img src="./assets/icon-x-silver.svg" alt="icon-x" />
+            <img src="./icon-x-silver.svg" alt="icon-x" />
           </button>
         </div>
         <div className="switch-option">
@@ -23,7 +23,7 @@ const ChooseSymbol = () => {
             className={option === "O" ? "active" : "inactive"}
             onClick={() => setOption("O")}
           >
-            <img src="./assets/icon-o-silver.svg" alt="icon-o" />
+            <img src="./icon-o-silver.svg" alt="icon-o" />
           </button>
         </div>
       </div>

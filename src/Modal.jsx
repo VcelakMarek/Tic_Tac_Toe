@@ -17,8 +17,8 @@ const color = {
 };
 
 const img = {
-  xWin: <img src="./assets/icon-x.svg" alt="icon-x"></img>,
-  oWin: <img src="./assets/icon-o.svg" alt="icon-o"></img>,
+  xWin: <img src="./icon-x.svg" alt="icon-x"></img>,
+  oWin: <img src="./icon-o.svg" alt="icon-o"></img>,
 };
 
 const winInfo = {
@@ -49,7 +49,11 @@ const Modal = ({
           <div className="buttons">
             {variant != "restartGame" && (
               <>
-                <Button link="/" variant="silver" onclick={props.onclick}>
+                <Button
+                  link="/Tic_Tac_Toe"
+                  variant="silver"
+                  onclick={props.onclick}
+                >
                   <p>QUIT</p>
                 </Button>
                 <Button
