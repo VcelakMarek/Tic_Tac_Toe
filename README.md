@@ -22,8 +22,7 @@ Users should be able to:
 - View the optimal layout for the game depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Play the game either solo vs the computer or multiplayer against another person
-- **Bonus 1**: Save the game state in the browser so that it’s preserved if the player refreshes their browser
-- **Bonus 2**: Instead of having the computer randomly make their moves, try making it clever so it’s proactive in blocking your moves and trying to win
+- See who wins and how many times
 
 ### Screenshot
 
@@ -33,37 +32,20 @@ Users should be able to:
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- **Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Vite](https://vitejs.dev/) - Build tool
+- [Prettier](https://prettier.io/) - Code formatter
+- [ESLint](https://eslint.org/) - Syntax check
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+- I learn how to work with React.
+- How to use react context
+- react router
+- useEffect, useState hooks
+- create reusable component with props
+- conditional rendering
+- using ternary operator
 
 ### Useful resources
 
