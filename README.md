@@ -10,7 +10,6 @@ This is a solution to the [Tic Tac Toe challenge on Frontend Mentor](https://www
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
 
 ## Overview
@@ -39,18 +38,13 @@ Users should be able to:
 
 ### What I learned
 
-- I learn how to work with React.
-- How to use react context
+- how to work with React
+- using react context
 - react router
 - useEffect, useState hooks
 - create reusable component with props
 - conditional rendering
 - using ternary operator
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
 ## Author
 
