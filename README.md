@@ -1,4 +1,4 @@
-Tic Tac Toe app
+# Tic Tac Toe app
 
 This is a solution to the [Tic Tac Toe challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tic-tac-toe-game-Re7ZF_E2v).
 
@@ -42,7 +42,7 @@ Users should be able to:
 - using react context
 - react router
 - useEffect, useState hooks
-- create reusable component with props
+- creating reusable components with props
 - conditional rendering
 - using ternary operator
 
