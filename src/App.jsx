@@ -11,7 +11,7 @@ const App = () => {
       <OptionProvider>
         <VsCpuProvider>
           <Routes>
-            <Route path="/Tic_Tac_Toe" element={<NewGameMenu />} />
+            <Route path="/Tic_Tac_Toe/" element={<NewGameMenu />} />
             <Route path="/game" element={<Game />} />
           </Routes>
         </VsCpuProvider>

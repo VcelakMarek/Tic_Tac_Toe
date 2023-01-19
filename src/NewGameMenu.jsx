@@ -10,8 +10,8 @@ const NewGameMenu = () => {
   return (
     <div>
       <div className="XO-header">
-        <img src="./icon-x.svg" alt="icon-x" />
-        <img src="./icon-o.svg" alt="icon-o" />
+        <img src="/Tic_Tac_Toe/icon-x.svg" alt="icon-x" />
+        <img src="/Tic_Tac_Toe/icon-o.svg" alt="icon-o" />
       </div>
       <ChooseSymbol />
       <div className="new-game-buttons">
