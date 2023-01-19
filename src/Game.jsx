@@ -16,9 +16,6 @@ const Game = () => {
     ["", "", ""],
     ["", "", ""],
   ]);
-
-  console.log("vsCPU", vsCPU);
-
   const [showModal, setShowModal] = useState(false);
   const [modalVariant, setModalVariant] = useState("");
   const [winner, setWinner] = useState("");
@@ -38,7 +35,6 @@ const Game = () => {
   useEffect(() => {
     setPLayer1(option);
     setPlayerMark(option);
-    console.log("player 1: ", player1);
     setOption("X");
   }, []);
 
@@ -51,16 +47,10 @@ const Game = () => {
     gameVsCPU(boardChange, playerMark, boardValues);
   }
 
-  // 00 01 02
-  // 10 11 12
-  // 20 21 22
-
-  console.log(boardValues);
   function handleCLick(e, x, y) {
     if (boardChange[x][y] === "") {
       boardChange[x][y] = vsCPU ? playerMark : option;
 
-      console.log(e.currentTarget);
       if (vsCPU) {
         gameVsCPU(boardChange, playerMark, boardValues);
       }
@@ -81,18 +71,18 @@ const Game = () => {
     <div className="game">
       <div className="row icon-row">
         <div className="XO-icons">
-          <img src="./icon-x.svg" alt="icon-x" />
-          <img src="./icon-o.svg" alt="icon-o" />
+          <img src="/Tic_Tac_Toe/icon-x.svg" alt="icon-x" />
+          <img src="/Tic_Tac_Toe/icon-o.svg" alt="icon-o" />
         </div>
         <div className="turn">
           <img
             className={option === "X" ? "visible" : "invisible"}
-            src="./icon-x-silver.svg"
+            src="/Tic_Tac_Toe/icon-x-silver.svg"
             alt="icon-x"
           />
           <img
             className={option === "O" ? "visible" : "invisible"}
-            src="./icon-o-silver.svg"
+            src="/Tic_Tac_Toe/icon-o-silver.svg"
             alt="icon-x"
           />
           <p>TURN</p>
