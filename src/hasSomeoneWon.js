@@ -31,7 +31,6 @@ function hasSomeoneWon(
   function whoWon(x) {
     x.toString() === X_WIN.toString()
       ? [
-          console.log("X WIN"),
           setShowModal(true),
           setModalVariant("xWin"),
           player1 === "X" ? setWinner("player1") : setWinner("player2"),
@@ -39,7 +38,6 @@ function hasSomeoneWon(
       : [
           x.toString() === O_WIN.toString()
             ? [
-                console.log("O WIN"),
                 setShowModal(true),
                 setModalVariant("oWin"),
                 player1 === "O" ? setWinner("player1") : setWinner("player2"),
@@ -49,7 +47,6 @@ function hasSomeoneWon(
   }
   function isTied(boardValues, setTies, setShowModal, setModalVariant) {
     if (!boardValues.some((value) => value.includes(""))) {
-      console.log("TIED");
       setTies(+1);
       setShowModal(true);
       setModalVariant("tied");

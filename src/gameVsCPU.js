@@ -1,5 +1,4 @@
 function gameVsCPU(boardChange, playerMark, boardValues) {
-  console.log("option:", playerMark);
   let random0 = Math.floor(Math.random() * (0 + 3));
   let random1 = Math.floor(Math.random() * (0 + 3));
 
